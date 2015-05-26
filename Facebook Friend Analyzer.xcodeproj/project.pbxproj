@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9417325C1B150200006B5F78 /* ChooseAnalyzerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417325A1B150200006B5F78 /* ChooseAnalyzerViewController.m */; };
+		9417325D1B150200006B5F78 /* ChooseAnalyzerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */; };
+		941732651B1504ED006B5F78 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 941732641B1504ED006B5F78 /* UICKeyChainStore.m */; };
 		94B2B01B1B14E82900CFE01F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01A1B14E82900CFE01F /* main.m */; };
 		94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01D1B14E82900CFE01F /* AppDelegate.m */; };
 		94B2B0211B14E82900CFE01F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0201B14E82900CFE01F /* ViewController.m */; };
@@ -32,6 +35,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		941732591B150200006B5F78 /* ChooseAnalyzerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooseAnalyzerViewController.h; sourceTree = "<group>"; };
+		9417325A1B150200006B5F78 /* ChooseAnalyzerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooseAnalyzerViewController.m; sourceTree = "<group>"; };
+		9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseAnalyzerViewController.xib; sourceTree = "<group>"; };
+		941732631B1504ED006B5F78 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
+		941732641B1504ED006B5F78 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
 		94B2B0151B14E82900CFE01F /* Facebook Friend Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facebook Friend Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B2B0191B14E82900CFE01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B2B01A1B14E82900CFE01F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -98,6 +106,8 @@
 		94B2B0171B14E82900CFE01F /* Facebook Friend Analyzer */ = {
 			isa = PBXGroup;
 			children = (
+				941732631B1504ED006B5F78 /* UICKeyChainStore.h */,
+				941732641B1504ED006B5F78 /* UICKeyChainStore.m */,
 				94B2B01C1B14E82900CFE01F /* AppDelegate.h */,
 				94B2B01D1B14E82900CFE01F /* AppDelegate.m */,
 				94B2B01F1B14E82900CFE01F /* ViewController.h */,
@@ -109,6 +119,9 @@
 				94B2B0441B14EB0B00CFE01F /* LoginViewController.h */,
 				94B2B0451B14EB0B00CFE01F /* LoginViewController.m */,
 				94B2B0461B14EB0B00CFE01F /* LoginViewController.xib */,
+				941732591B150200006B5F78 /* ChooseAnalyzerViewController.h */,
+				9417325A1B150200006B5F78 /* ChooseAnalyzerViewController.m */,
+				9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */,
 			);
 			path = "Facebook Friend Analyzer";
 			sourceTree = "<group>";
@@ -219,6 +232,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9417325D1B150200006B5F78 /* ChooseAnalyzerViewController.xib in Resources */,
 				94B2B0481B14EB0B00CFE01F /* LoginViewController.xib in Resources */,
 				94B2B0241B14E82900CFE01F /* Main.storyboard in Resources */,
 				94B2B0291B14E82900CFE01F /* LaunchScreen.xib in Resources */,
@@ -242,8 +256,10 @@
 			files = (
 				94B2B0471B14EB0B00CFE01F /* LoginViewController.m in Sources */,
 				94B2B0211B14E82900CFE01F /* ViewController.m in Sources */,
+				9417325C1B150200006B5F78 /* ChooseAnalyzerViewController.m in Sources */,
 				94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */,
 				94B2B01B1B14E82900CFE01F /* main.m in Sources */,
+				941732651B1504ED006B5F78 /* UICKeyChainStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +462,7 @@
 				94B2B03A1B14E82A00CFE01F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		94B2B03B1B14E82A00CFE01F /* Build configuration list for PBXNativeTarget "Facebook Friend AnalyzerTests" */ = {
 			isa = XCConfigurationList;
@@ -454,6 +471,7 @@
 				94B2B03D1B14E82A00CFE01F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

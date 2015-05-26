@@ -8,7 +8,6 @@
 
 #import "LoginViewController.h"
 
-
 @interface LoginViewController ()
 
 @property (strong, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
@@ -18,9 +17,9 @@
 @implementation LoginViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
+
     [FBSDKLoginButton class];
+    [super viewDidLoad];
     
     self.loginButton.readPermissions = [self getFacebookPermissions];
     
@@ -30,6 +29,16 @@
     else {
         NSLog(@"No access token");
     }
+ 
+}
+
+- (void) showChooseAnalyzerViewController
+{
+    ChooseAnalyzerViewController *chooseAnalyzer = [[ChooseAnalyzerViewController alloc] initWithNibName:@"ChooseAnalyzerViewController" bundle:[NSBundle mainBundle]];
+    
+    self.modalPresentationStyle = UIModalPresentationFormSheet;
+    [self presentViewController:chooseAnalyzer animated:YES completion:nil];
+    NSLog(@"HERE");
 }
 
 - (NSArray*) getFacebookPermissions
@@ -53,6 +62,11 @@
 {
     if(!error) {
         NSLog(@"Successful login");
+        
+        UICKeyChainStore *keychain = [[UICKeyChainStore alloc] init];
+        keychain[@"isLoggedIn"] = @"YES";
+        
+        [self showChooseAnalyzerViewController];
     }
     else {
         NSLog(@"Problem logging in");
@@ -62,6 +76,8 @@
 - (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton
 {
     NSLog(@"Logged out :(");
+    UICKeyChainStore *keychain = [[UICKeyChainStore alloc] init];
+    keychain[@"isLoggedIn"] = nil;
 }
 
 @end

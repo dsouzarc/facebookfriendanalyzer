@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "UICKeyChainStore.h"
+#import "ChooseAnalyzerViewController.h"
 #import "LoginViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>

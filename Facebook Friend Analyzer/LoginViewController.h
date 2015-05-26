@@ -10,6 +10,8 @@
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import <FBSDKLoginKit/FBSDKLoginKit.h>
+#import "ChooseAnalyzerViewController.h"
+#import "UICKeyChainStore.h"
 
 @interface LoginViewController : ViewController <FBSDKLoginButtonDelegate>
 
