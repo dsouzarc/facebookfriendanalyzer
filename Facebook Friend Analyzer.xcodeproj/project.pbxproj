@@ -17,6 +17,8 @@
 		94B2B0411B14EAC900CFE01F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */; };
 		94B2B0421B14EAC900CFE01F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */; };
 		94B2B0431B14EAC900CFE01F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */; };
+		94B2B0471B14EB0B00CFE01F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0451B14EB0B00CFE01F /* LoginViewController.m */; };
+		94B2B0481B14EB0B00CFE01F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B2B0461B14EB0B00CFE01F /* LoginViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +48,9 @@
 		94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
 		94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		94B2B0441B14EB0B00CFE01F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		94B2B0451B14EB0B00CFE01F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		94B2B0461B14EB0B00CFE01F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +106,9 @@
 				94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */,
 				94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */,
 				94B2B0181B14E82900CFE01F /* Supporting Files */,
+				94B2B0441B14EB0B00CFE01F /* LoginViewController.h */,
+				94B2B0451B14EB0B00CFE01F /* LoginViewController.m */,
+				94B2B0461B14EB0B00CFE01F /* LoginViewController.xib */,
 			);
 			path = "Facebook Friend Analyzer";
 			sourceTree = "<group>";
@@ -211,6 +219,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B2B0481B14EB0B00CFE01F /* LoginViewController.xib in Resources */,
 				94B2B0241B14E82900CFE01F /* Main.storyboard in Resources */,
 				94B2B0291B14E82900CFE01F /* LaunchScreen.xib in Resources */,
 				94B2B0261B14E82900CFE01F /* Images.xcassets in Resources */,
@@ -231,6 +240,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B2B0471B14EB0B00CFE01F /* LoginViewController.m in Sources */,
 				94B2B0211B14E82900CFE01F /* ViewController.m in Sources */,
 				94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */,
 				94B2B01B1B14E82900CFE01F /* main.m in Sources */,
