@@ -14,6 +14,9 @@
 		94B2B0261B14E82900CFE01F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94B2B0251B14E82900CFE01F /* Images.xcassets */; };
 		94B2B0291B14E82900CFE01F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B2B0271B14E82900CFE01F /* LaunchScreen.xib */; };
 		94B2B0351B14E82A00CFE01F /* Facebook_Friend_AnalyzerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0341B14E82A00CFE01F /* Facebook_Friend_AnalyzerTests.m */; };
+		94B2B0411B14EAC900CFE01F /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */; };
+		94B2B0421B14EAC900CFE01F /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */; };
+		94B2B0431B14EAC900CFE01F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,9 @@
 		94B2B02E1B14E82A00CFE01F /* Facebook Friend AnalyzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Facebook Friend AnalyzerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B2B0331B14E82A00CFE01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B2B0341B14E82A00CFE01F /* Facebook_Friend_AnalyzerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Facebook_Friend_AnalyzerTests.m; sourceTree = "<group>"; };
+		94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +53,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B2B0421B14EAC900CFE01F /* FBSDKLoginKit.framework in Frameworks */,
+				94B2B0411B14EAC900CFE01F /* FBSDKCoreKit.framework in Frameworks */,
+				94B2B0431B14EAC900CFE01F /* FBSDKShareKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +97,9 @@
 				94B2B0221B14E82900CFE01F /* Main.storyboard */,
 				94B2B0251B14E82900CFE01F /* Images.xcassets */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
+				94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */,
+				94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */,
+				94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */,
 				94B2B0181B14E82900CFE01F /* Supporting Files */,
 			);
 			path = "Facebook Friend Analyzer";
@@ -347,6 +359,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Ryan/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = "Facebook Friend Analyzer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -357,6 +373,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Ryan/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = "Facebook Friend Analyzer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
