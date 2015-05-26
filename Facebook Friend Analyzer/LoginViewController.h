@@ -8,6 +8,9 @@
 
 #import "ViewController.h"
 
-@interface LoginViewController : ViewController
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBSDKLoginKit/FBSDKLoginKit.h>
+
+@interface LoginViewController : ViewController <FBSDKLoginButtonDelegate>
 
 @end

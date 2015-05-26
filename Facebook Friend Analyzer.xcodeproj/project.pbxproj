@@ -45,9 +45,9 @@
 		94B2B02E1B14E82A00CFE01F /* Facebook Friend AnalyzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Facebook Friend AnalyzerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B2B0331B14E82A00CFE01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B2B0341B14E82A00CFE01F /* Facebook_Friend_AnalyzerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Facebook_Friend_AnalyzerTests.m; sourceTree = "<group>"; };
-		94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
-		94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
+		94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		94B2B0441B14EB0B00CFE01F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		94B2B0451B14EB0B00CFE01F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		94B2B0461B14EB0B00CFE01F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
@@ -77,6 +77,9 @@
 		94B2B00C1B14E82900CFE01F = {
 			isa = PBXGroup;
 			children = (
+				94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */,
+				94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */,
+				94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */,
 				94B2B0171B14E82900CFE01F /* Facebook Friend Analyzer */,
 				94B2B0311B14E82A00CFE01F /* Facebook Friend AnalyzerTests */,
 				94B2B0161B14E82900CFE01F /* Products */,
@@ -102,9 +105,6 @@
 				94B2B0221B14E82900CFE01F /* Main.storyboard */,
 				94B2B0251B14E82900CFE01F /* Images.xcassets */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
-				94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */,
-				94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */,
-				94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */,
 				94B2B0181B14E82900CFE01F /* Supporting Files */,
 				94B2B0441B14EB0B00CFE01F /* LoginViewController.h */,
 				94B2B0451B14EB0B00CFE01F /* LoginViewController.m */,

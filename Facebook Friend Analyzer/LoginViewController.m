@@ -8,10 +8,10 @@
 
 #import "LoginViewController.h"
 
-#import <FBSDKCoreKit/FBSDKCoreKit.h>
-#import <FBSDKLoginKit/FBSDKLoginKit.h>
 
 @interface LoginViewController ()
+
+@property (strong, nonatomic) IBOutlet FBSDKLoginButton *loginButton;
 
 @end
 
@@ -19,24 +19,49 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    FBSDKLoginButton *loginButton = [[FBSDKLoginButton alloc] init];
-    loginButton.center = self.view.center;
-    [self.view addSubview:loginButton];
+    
+    [FBSDKLoginButton class];
+    
+    self.loginButton.readPermissions = [self getFacebookPermissions];
+    
+    if([FBSDKAccessToken currentAccessToken]) {
+        NSLog(@"We have access token");
+    }
+    else {
+        NSLog(@"No access token");
+    }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSArray*) getFacebookPermissions
+{
+    NSMutableArray *permissions = [[NSMutableArray alloc] init];
+    
+    [permissions addObject:@"public_profile"];
+    [permissions addObject:@"user_friends"];
+    [permissions addObject:@"user_photos"];
+    [permissions addObject:@"user_videos"];
+    [permissions addObject:@"user_posts"];
+    [permissions addObject:@"user_status"];
+    [permissions addObject:@"user_tagged_places"];
+    [permissions addObject:@"read_mailbox"];
+    [permissions addObject:@"read_stream"];
+    
+    return permissions;
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) loginButton:(FBSDKLoginButton *)loginButton didCompleteWithResult:(FBSDKLoginManagerLoginResult *)result error:(NSError *)error
+{
+    if(!error) {
+        NSLog(@"Successful login");
+    }
+    else {
+        NSLog(@"Problem logging in");
+    }
 }
-*/
+
+- (void) loginButtonDidLogOut:(FBSDKLoginButton *)loginButton
+{
+    NSLog(@"Logged out :(");
+}
 
 @end

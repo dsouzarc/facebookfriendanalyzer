@@ -6,14 +6,34 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController">
             <connections>
-                <outlet property="view" destination="i5M-Pr-FkT" id="8GI-F9-0GQ"/>
+                <outlet property="loginButton" destination="bgh-Qi-8te" id="ubw-yB-wPN"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="XoW-oI-8uO"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgh-Qi-8te" customClass="FBSDKLoginButton">
+                    <rect key="frame" x="87" y="314" width="200" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="L9o-D3-XOH"/>
+                        <constraint firstAttribute="height" constant="40" id="UgS-Ar-7dX"/>
+                    </constraints>
+                    <state key="normal" title="Login">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="kYA-eQ-6Uw"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="bgh-Qi-8te" secondAttribute="centerX" id="0m4-nJ-L0k"/>
+                <constraint firstAttribute="centerY" secondItem="bgh-Qi-8te" secondAttribute="centerY" id="HGD-c2-IQG"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
         </view>
     </objects>
