@@ -82,13 +82,40 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		94B2B00C1B14E82900CFE01F = {
+		941732661B150587006B5F78 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				94B2B0441B14EB0B00CFE01F /* LoginViewController.h */,
+				94B2B0451B14EB0B00CFE01F /* LoginViewController.m */,
+				94B2B0461B14EB0B00CFE01F /* LoginViewController.xib */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		941732671B15058F006B5F78 /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				941732631B1504ED006B5F78 /* UICKeyChainStore.h */,
+				941732641B1504ED006B5F78 /* UICKeyChainStore.m */,
+			);
+			name = KeyChain;
+			sourceTree = "<group>";
+		};
+		941732681B1505A4006B5F78 /* Facebook Libraries */ = {
 			isa = PBXGroup;
 			children = (
 				94B2B03E1B14EAC900CFE01F /* FBSDKCoreKit.framework */,
 				94B2B03F1B14EAC900CFE01F /* FBSDKLoginKit.framework */,
 				94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */,
+			);
+			name = "Facebook Libraries";
+			sourceTree = "<group>";
+		};
+		94B2B00C1B14E82900CFE01F = {
+			isa = PBXGroup;
+			children = (
 				94B2B0171B14E82900CFE01F /* Facebook Friend Analyzer */,
+				941732681B1505A4006B5F78 /* Facebook Libraries */,
 				94B2B0311B14E82A00CFE01F /* Facebook Friend AnalyzerTests */,
 				94B2B0161B14E82900CFE01F /* Products */,
 			);
@@ -106,8 +133,9 @@
 		94B2B0171B14E82900CFE01F /* Facebook Friend Analyzer */ = {
 			isa = PBXGroup;
 			children = (
-				941732631B1504ED006B5F78 /* UICKeyChainStore.h */,
-				941732641B1504ED006B5F78 /* UICKeyChainStore.m */,
+				941732591B150200006B5F78 /* ChooseAnalyzerViewController.h */,
+				9417325A1B150200006B5F78 /* ChooseAnalyzerViewController.m */,
+				9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */,
 				94B2B01C1B14E82900CFE01F /* AppDelegate.h */,
 				94B2B01D1B14E82900CFE01F /* AppDelegate.m */,
 				94B2B01F1B14E82900CFE01F /* ViewController.h */,
@@ -116,12 +144,8 @@
 				94B2B0251B14E82900CFE01F /* Images.xcassets */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
 				94B2B0181B14E82900CFE01F /* Supporting Files */,
-				94B2B0441B14EB0B00CFE01F /* LoginViewController.h */,
-				94B2B0451B14EB0B00CFE01F /* LoginViewController.m */,
-				94B2B0461B14EB0B00CFE01F /* LoginViewController.xib */,
-				941732591B150200006B5F78 /* ChooseAnalyzerViewController.h */,
-				9417325A1B150200006B5F78 /* ChooseAnalyzerViewController.m */,
-				9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */,
+				941732671B15058F006B5F78 /* KeyChain */,
+				941732661B150587006B5F78 /* Login */,
 			);
 			path = "Facebook Friend Analyzer";
 			sourceTree = "<group>";
