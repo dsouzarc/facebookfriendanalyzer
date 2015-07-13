@@ -52,14 +52,33 @@
             for(id key in formattedResults) {
                 NSLog(@"%@", [formattedResults objectForKey:key]);
             }
+            NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+            [self recursivelyGetPosts:pagingInformation[@"next"]];
         }
     }];
 
 }
 
-- (void) recursivelyGetPosts
+- (void) recursivelyGetPosts:(NSString*)url
 {
+    NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
     
+    NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+
+    NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+        
+    for(id key in formattedResults) {
+        NSLog(@"%@", [formattedResults objectForKey:key]);
+    }
+
+    if(pagingInformation && pagingInformation[@"next"]) {
+        [self recursivelyGetPosts:pagingInformation[@"next"]];
+    }
+    
+    else {
+        NSLog(@"Here..?");
+    }
+
 }
 
 - (void) getFacebookFriends
