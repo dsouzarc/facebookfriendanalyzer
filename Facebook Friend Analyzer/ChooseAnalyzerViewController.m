@@ -12,6 +12,7 @@
 @interface ChooseAnalyzerViewController ()
 
 @property (strong, nonatomic) NSMutableSet *people;
+@property (strong, nonatomic) NSMutableDictionary *posts;
 
 @end
 
@@ -22,6 +23,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     self.people = [[NSMutableSet alloc] init];
+    self.posts = [[NSMutableDictionary alloc] init];
     
     return self;
 }
@@ -29,7 +31,35 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getFacebookFriends];
+    //[self getFacebookFriends];
+    [self getFacebookPosts];
+}
+
+- (void) getFacebookPosts
+{
+    //GET LIST OF FRIENDS
+    NSString *urlRequest = @"/me/feed?include_hidden=true";
+    
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        if(error) {
+            NSLog(@"ERROR AT USER POSTS");
+            NSLog(error.description);
+        }
+        
+        else {
+            NSDictionary *formattedResults = (NSDictionary*) result;
+            
+            for(id key in formattedResults) {
+                NSLog(@"%@", [formattedResults objectForKey:key]);
+            }
+        }
+    }];
+
+}
+
+- (void) recursivelyGetPosts
+{
+    
 }
 
 - (void) getFacebookFriends
