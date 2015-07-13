@@ -10,4 +10,18 @@
 
 @implementation Comment
 
+- (instancetype) initWithCommentID:(NSString *)commentID message:(NSString *)message personID:(NSString *)personID postID:(NSString *)postID
+{
+    self = [super init];
+    
+    if(self) {
+        self.commentID = commentID;
+        self.message = message;
+        self.personID = personID;
+        self.postID = postID;
+    }
+    
+    return self;
+}
+
 @end

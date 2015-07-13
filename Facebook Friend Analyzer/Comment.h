@@ -10,4 +10,11 @@
 
 @interface Comment : NSObject
 
+@property(strong, nonatomic) NSString *commentID;
+@property(strong, nonatomic) NSString *message;
+@property(strong, nonatomic) NSString *personID;
+@property(strong, nonatomic) NSString *postID;
+
+- (instancetype)initWithCommentID:(NSString*)commentID message:(NSString*)message personID:(NSString*)personID postID:(NSString*)postID;
+
 @end

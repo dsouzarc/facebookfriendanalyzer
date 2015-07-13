@@ -10,6 +10,10 @@
 		9417325C1B150200006B5F78 /* ChooseAnalyzerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9417325A1B150200006B5F78 /* ChooseAnalyzerViewController.m */; };
 		9417325D1B150200006B5F78 /* ChooseAnalyzerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */; };
 		941732651B1504ED006B5F78 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 941732641B1504ED006B5F78 /* UICKeyChainStore.m */; };
+		949FAE771B547A0D00835D9B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE761B547A0D00835D9B /* Person.m */; };
+		949FAE7A1B547A9500835D9B /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE791B547A9500835D9B /* Post.m */; };
+		949FAE7D1B547AC700835D9B /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE7C1B547AC700835D9B /* Comment.m */; };
+		949FAE801B547BE600835D9B /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE7F1B547BE600835D9B /* Like.m */; };
 		94B2B01B1B14E82900CFE01F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01A1B14E82900CFE01F /* main.m */; };
 		94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01D1B14E82900CFE01F /* AppDelegate.m */; };
 		94B2B0211B14E82900CFE01F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0201B14E82900CFE01F /* ViewController.m */; };
@@ -22,6 +26,7 @@
 		94B2B0431B14EAC900CFE01F /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B2B0401B14EAC900CFE01F /* FBSDKShareKit.framework */; };
 		94B2B0471B14EB0B00CFE01F /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0451B14EB0B00CFE01F /* LoginViewController.m */; };
 		94B2B0481B14EB0B00CFE01F /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B2B0461B14EB0B00CFE01F /* LoginViewController.xib */; };
+		94D17D361B1A514B006AF7A7 /* facebook_f_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +45,14 @@
 		9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChooseAnalyzerViewController.xib; sourceTree = "<group>"; };
 		941732631B1504ED006B5F78 /* UICKeyChainStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UICKeyChainStore.h; sourceTree = "<group>"; };
 		941732641B1504ED006B5F78 /* UICKeyChainStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UICKeyChainStore.m; sourceTree = "<group>"; };
+		949FAE751B547A0D00835D9B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		949FAE761B547A0D00835D9B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		949FAE781B547A9500835D9B /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
+		949FAE791B547A9500835D9B /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
+		949FAE7B1B547AC700835D9B /* Comment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Comment.h; sourceTree = "<group>"; };
+		949FAE7C1B547AC700835D9B /* Comment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Comment.m; sourceTree = "<group>"; };
+		949FAE7E1B547BE600835D9B /* Like.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Like.h; sourceTree = "<group>"; };
+		949FAE7F1B547BE600835D9B /* Like.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Like.m; sourceTree = "<group>"; };
 		94B2B0151B14E82900CFE01F /* Facebook Friend Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facebook Friend Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B2B0191B14E82900CFE01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B2B01A1B14E82900CFE01F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -59,6 +72,7 @@
 		94B2B0441B14EB0B00CFE01F /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		94B2B0451B14EB0B00CFE01F /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		94B2B0461B14EB0B00CFE01F /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_f_icon.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,10 +156,19 @@
 				94B2B0201B14E82900CFE01F /* ViewController.m */,
 				94B2B0221B14E82900CFE01F /* Main.storyboard */,
 				94B2B0251B14E82900CFE01F /* Images.xcassets */,
+				94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
 				94B2B0181B14E82900CFE01F /* Supporting Files */,
 				941732671B15058F006B5F78 /* KeyChain */,
 				941732661B150587006B5F78 /* Login */,
+				949FAE751B547A0D00835D9B /* Person.h */,
+				949FAE761B547A0D00835D9B /* Person.m */,
+				949FAE781B547A9500835D9B /* Post.h */,
+				949FAE791B547A9500835D9B /* Post.m */,
+				949FAE7B1B547AC700835D9B /* Comment.h */,
+				949FAE7C1B547AC700835D9B /* Comment.m */,
+				949FAE7E1B547BE600835D9B /* Like.h */,
+				949FAE7F1B547BE600835D9B /* Like.m */,
 			);
 			path = "Facebook Friend Analyzer";
 			sourceTree = "<group>";
@@ -259,6 +282,7 @@
 				9417325D1B150200006B5F78 /* ChooseAnalyzerViewController.xib in Resources */,
 				94B2B0481B14EB0B00CFE01F /* LoginViewController.xib in Resources */,
 				94B2B0241B14E82900CFE01F /* Main.storyboard in Resources */,
+				94D17D361B1A514B006AF7A7 /* facebook_f_icon.png in Resources */,
 				94B2B0291B14E82900CFE01F /* LaunchScreen.xib in Resources */,
 				94B2B0261B14E82900CFE01F /* Images.xcassets in Resources */,
 			);
@@ -278,12 +302,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				949FAE801B547BE600835D9B /* Like.m in Sources */,
 				94B2B0471B14EB0B00CFE01F /* LoginViewController.m in Sources */,
 				94B2B0211B14E82900CFE01F /* ViewController.m in Sources */,
+				949FAE771B547A0D00835D9B /* Person.m in Sources */,
 				9417325C1B150200006B5F78 /* ChooseAnalyzerViewController.m in Sources */,
 				94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */,
 				94B2B01B1B14E82900CFE01F /* main.m in Sources */,
 				941732651B1504ED006B5F78 /* UICKeyChainStore.m in Sources */,
+				949FAE7D1B547AC700835D9B /* Comment.m in Sources */,
+				949FAE7A1B547A9500835D9B /* Post.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

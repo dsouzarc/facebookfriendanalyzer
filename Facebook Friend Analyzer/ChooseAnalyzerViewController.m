@@ -81,7 +81,6 @@
     else {
         NSLog(@"Here..?");
     }
-
 }
 
 - (void) getFacebookFriends

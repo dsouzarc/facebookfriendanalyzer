@@ -10,4 +10,15 @@
 
 @implementation Person
 
+- (instancetype) initWithID:(NSString *)id name:(NSString *)name
+{
+    self = [super init];
+    
+    if(self) {
+        self.id = id;
+        self.name = name;
+    }
+    return self;
+}
+
 @end

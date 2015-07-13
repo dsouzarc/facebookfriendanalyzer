@@ -10,4 +10,9 @@
 
 @interface Like : NSObject
 
+@property(strong, nonatomic) NSString *personWhoLikedItID;
+@property(strong, nonatomic) NSString *postID;
+
+- (instancetype) initWithPersonWhoLikedItID:(NSString*)personWhoLikedItID postID:(NSString*)postID;
+
 @end

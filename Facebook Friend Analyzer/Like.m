@@ -10,4 +10,16 @@
 
 @implementation Like
 
+- (instancetype) initWithPersonWhoLikedItID:(NSString *)personWhoLikedItID postID:(NSString *)postID
+{
+    self = [super init];
+    
+    if(self) {
+        self.personWhoLikedItID = personWhoLikedItID;
+        self.postID = postID;
+    }
+    
+    return self;
+}
+
 @end
