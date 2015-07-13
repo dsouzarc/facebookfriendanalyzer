@@ -49,9 +49,11 @@
         else {
             NSDictionary *formattedResults = (NSDictionary*) result;
             
-            for(id key in formattedResults) {
-                NSLog(@"%@", [formattedResults objectForKey:key]);
+            NSArray *postResults = formattedResults[@"data"];
+            for(NSDictionary *dict in postResults) {
+                NSLog(@"%@", dict[@"message"]);
             }
+   
             NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
             [self recursivelyGetPosts:pagingInformation[@"next"]];
         }
@@ -66,9 +68,10 @@
     NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
     NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
-        
-    for(id key in formattedResults) {
-        NSLog(@"%@", [formattedResults objectForKey:key]);
+    
+    NSArray *postResults = formattedResults[@"data"];
+    for(NSDictionary *dict in postResults) {
+        NSLog(@"%@", dict[@"message"]);
     }
 
     if(pagingInformation && pagingInformation[@"next"]) {
