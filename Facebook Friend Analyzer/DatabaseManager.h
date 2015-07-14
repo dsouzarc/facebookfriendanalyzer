@@ -18,13 +18,16 @@
 
 + (id)databaseManager;
 
--(void) addPersonToTable:(Person*)person;
+- (void) addPersonToTable:(Person*)person;
 - (void) addPeopleToDatabase:(NSArray*)people;
 
--(void) addLikeToTable:(Like*)like;
+- (void) addLikeToTable:(Like*)like;
+- (void) addLikesToTable:(NSArray*)likes;
 
--(void)addCommentToTable:(Comment*)comment;
+- (void) addCommentToTable:(Comment*)comment;
+- (void) addCommentsToTable:(NSArray*)comments;
 
--(void)addPostToTable:(Post*)post;
+- (void) addPostToTable:(Post*)post;
+- (void) addPostsToTable:(NSArray*)posts;
 
 @end

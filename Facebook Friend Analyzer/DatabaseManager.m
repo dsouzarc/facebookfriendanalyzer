@@ -17,7 +17,7 @@
 
 @implementation DatabaseManager
 
-+(id) databaseManager
++ (id) databaseManager
 {
     static DatabaseManager *databaseManager = nil;
     
@@ -62,13 +62,13 @@
     return self;
 }
 
--(void) createPersonTable
+- (void) createPersonTable
 {
     NSString *createPostSQL = @"create table if not exists Person(personID integer primary key, name text, profilePicture text)";
     [self createTable:createPostSQL tableName:@"Person"];
 }
 
--(void) addPersonToTable:(Person*)person
+- (void) addPersonToTable:(Person*)person
 {
     //Because ID can be null at times
     NSString *personID = person.id;
@@ -89,22 +89,18 @@
     sqlite3_exec(self.database, "BEGIN TRANSACTION", NULL, NULL, &errorMessage);
     
     for(Person *person in people) {
-        NSString *insertSQL = [NSString stringWithFormat:@"insert into Person(personID, name, profilePicture) values ('%lld', '%@', '%@')",
-                               [person.id longLongValue], person.name, person.profilePicture];
-        if(![self executeStatement:insertSQL]) {
-            NSLog(@"PROBLEM INSERTING PERSON: %@\t%@", person.id, person.name);
-        }
+        [self addPersonToTable:person];
     }
     sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
 }
 
--(void) createLikeTable
+- (void) createLikeTable
 {
     NSString *createPostSQL = @"create table if not exists Like(personWhoLikedItID integer primary key, postID text)";
     [self createTable:createPostSQL tableName:@"Like"];
 }
 
--(void) addLikeToTable:(Like*)like
+- (void) addLikeToTable:(Like*)like
 {
     NSString *insertSQL = [NSString stringWithFormat:@"insert into Like(personWhoLikedItID, postID) values ('%@', '%@')", like.personWhoLikedItID, like.postID];
     if(![self executeStatement:insertSQL]) {
@@ -112,13 +108,24 @@
     }
 }
 
--(void) createCommentTable
+- (void) addLikesToTable:(NSArray *)likes
+{
+    char *errorMessage;
+    sqlite3_exec(self.database, "BEGIN TRANSACTION", NULL, NULL, &errorMessage);
+    
+    for(Like *like in likes) {
+        [self addLikeToTable:like];
+    }
+    sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
+}
+
+- (void) createCommentTable
 {
     NSString *createPostSQL = @"create table if not exists Comment(commentID integer primary key, message text, personID text, postID text)";
     [self createTable:createPostSQL tableName:@"Comment"];
 }
 
--(void)addCommentToTable:(Comment*)comment
+- (void)addCommentToTable:(Comment*)comment
 {
     NSString *insertSQL = [NSString stringWithFormat:@"insert into Comment(commentID, message, personID, postID) values ('%lld', '%@', '%@', '%@')", [comment.commentID longLongValue], comment.message, comment.personID, comment.postID];
     if(![self executeStatement:insertSQL]) {
@@ -126,13 +133,24 @@
     }
 }
 
--(void) createPostTable
+- (void) addCommentsToTable:(NSArray *)comments
+{
+    char *errorMessage;
+    sqlite3_exec(self.database, "BEGIN TRANSACTION", NULL, NULL, &errorMessage);
+    
+    for(Comment *comment in comments) {
+        [self addCommentToTable:comment];
+    }
+    sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
+}
+
+- (void) createPostTable
 {
     NSString *createPostSQL = @"create table if not exists Post(postID integer primary key, message text, time text)";
     [self createTable:createPostSQL tableName:@"Post"];
 }
 
--(void)addPostToTable:(Post*)post
+- (void)addPostToTable:(Post*)post
 {
     NSString *insertSQL = [NSString stringWithFormat:@"insert into Post(postID, message, time) values ('%lld', '%@', '%@')", [post.postID longLongValue], post.message, post.time];
     if(![self executeStatement:insertSQL]) {
@@ -140,7 +158,18 @@
     }
 }
 
--(BOOL) executeStatement:(NSString*)sqlQuery
+- (void) addPostsToTable:(NSArray *)posts
+{
+    char *errorMessage;
+    sqlite3_exec(self.database, "BEGIN TRANSACTION", NULL, NULL, &errorMessage);
+    
+    for(Post *post in posts) {
+        [self addPostToTable:post];
+    }
+    sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
+}
+
+- (BOOL) executeStatement:(NSString*)sqlQuery
 {
     sqlite3_stmt *statement;
     
@@ -151,7 +180,7 @@
     return true;
 }
 
--(void) createTable:(NSString*)createTableStatement tableName:(NSString*)tableName;
+- (void) createTable:(NSString*)createTableStatement tableName:(NSString*)tableName;
 {
     const char *sqlStatement = [createTableStatement UTF8String];
     
