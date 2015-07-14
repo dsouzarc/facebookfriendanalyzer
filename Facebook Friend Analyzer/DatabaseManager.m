@@ -62,18 +62,40 @@
     return self;
 }
 
-
 -(void) createPersonTable
 {
-    NSString *createPostSQL = @"create table if not exists Person(personID integer primary key, name text)";
+    NSString *createPostSQL = @"create table if not exists Person(personID integer primary key, name text, profilePicture text)";
     [self createTable:createPostSQL tableName:@"Person"];
 }
 
+-(void) addPersonToTable:(Person*)person
+{
+    //Because ID can be null at times
+    NSString *personID = person.id;
+    if(!personID) {
+        personID = [NSString stringWithFormat:@"%ld", person.name.hash];
+    }
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into Person(personID, name, profilePicture) values ('%lld', '%@', '%@')", [person.id longLongValue], person.name, person.profilePicture];
+    if(![self executeStatement:insertSQL]) {
+        NSLog(@"PROBLEM INSERTING PERSON: %@\t%@", person.id, person.name);
+    }
+    
+}
 
 -(void) createLikeTable
 {
     NSString *createPostSQL = @"create table if not exists Like(personWhoLikedItID integer primary key, postID text)";
     [self createTable:createPostSQL tableName:@"Like"];
+}
+
+-(void) addLikeToTable:(Like*)like
+{
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into Like(personWhoLikedItID, postID) values ('%@', '%@')", like.personWhoLikedItID, like.postID];
+    
+    if(![self executeStatement:insertSQL]) {
+        NSLog(@"PROBLEM INSERTING LIKE: %@\t%@", like.personWhoLikedItID, like.postID);
+    }
 }
 
 -(void) createCommentTable
@@ -82,10 +104,37 @@
     [self createTable:createPostSQL tableName:@"Comment"];
 }
 
+-(void)addCommentToTable:(Comment*)comment
+{
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into Comment(commentID, message, personID, postID) values ('%lld', '%@', '%@', '%@')", [comment.commentID longLongValue], comment.message, comment.personID, comment.postID];
+    if(![self executeStatement:insertSQL]) {
+        NSLog(@"PROBLEM INSERTING COMMENT: %@\t%@", comment.commentID, comment.message);
+    }
+}
+
 -(void) createPostTable
 {
     NSString *createPostSQL = @"create table if not exists Post(postID integer primary key, message text, time text)";
     [self createTable:createPostSQL tableName:@"Post"];
+}
+
+-(void)addPostToTable:(Post*)post
+{
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into Post(postID, message, time) values ('%lld', '%@', '%@')", [post.postID longLongValue], post.message, post.time];
+    if(![self executeStatement:insertSQL]) {
+        NSLog(@"PROBLEM INSERTING POST: %@\t%@", post.postID, post.message);
+    }
+}
+
+-(BOOL) executeStatement:(NSString*)sqlQuery
+{
+    sqlite3_stmt *statement;
+    
+    sqlite3_prepare_v2(_database, [sqlQuery UTF8String], -1, &statement, NULL);
+    if (sqlite3_step(statement) != SQLITE_DONE) {
+        return false;
+    }
+    return true;
 }
 
 -(void) createTable:(NSString*)createTableStatement tableName:(NSString*)tableName;
