@@ -14,6 +14,10 @@
 @property (strong, nonatomic) NSMutableSet *people;
 @property (strong, nonatomic) NSMutableDictionary *posts;
 
+@property (strong, nonatomic) NSMutableArray *postTracker;
+
+@property (strong, nonatomic) DatabaseManager *dbManager;
+
 @end
 
 @implementation ChooseAnalyzerViewController
@@ -24,6 +28,7 @@
     
     self.people = [[NSMutableSet alloc] init];
     self.posts = [[NSMutableDictionary alloc] init];
+    //self.dbManager = [[DatabaseManager alloc] init];
     
     return self;
 }
@@ -31,8 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //[self getFacebookFriends];
-    [self getFacebookPosts];
+    [self getFacebookFriends];
+    //[self getFacebookPosts];
 }
 
 - (void) getFacebookPosts
@@ -58,8 +63,24 @@
             [self recursivelyGetPosts:pagingInformation[@"next"]];
         }
     }];
-
 }
+
+/*- (Person*)getPersonFromID:(NSString*)personID
+{
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:personID parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        if(error) {
+            NSLog(@"ERROR AT USER POSTS");
+            NSLog(error.description);
+        }
+        
+        else {
+            NSDictionary *formattedResults = (NSDictionary*) result;
+            
+            return new [[Person alloc] initWithID:formattedResults[@"id"] name:formattedResults[@"name"] profilePicture:NULL];
+        }
+    }];
+
+}*/
 
 - (void) recursivelyGetPosts:(NSString*)url
 {
@@ -97,6 +118,7 @@
         else {
             NSDictionary *formattedResults = (NSDictionary*) result;
             NSArray *people = [formattedResults objectForKey:@"data"];
+            
             NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
             
             [self addPeople:people];
@@ -121,6 +143,7 @@
     }
     
     else {
+        [self.dbManager addPeopleToDatabase:[self.people allObjects]];
         NSLog(@"Here..?");
     }
 }
@@ -128,15 +151,19 @@
 - (void) addPeople:(NSArray*)people
 {
     for(NSDictionary *person in people) {
-        
         @try {
+            NSString *personID = person[@"id"];
             NSString *name = person[@"name"];
+            NSDictionary *personData = person[@"picture"];
+            NSString *pictureURL = personData[@"url"];
+            
+            Person *person = [[Person alloc] initWithID:personID name:name profilePicture:pictureURL];
             
             if([self.people containsObject:name]) {
                 NSLog(@"ALREADY CONTAINED: %@", name);
             }
             else {
-                [self.people addObject:name];
+                [self.people addObject:person];
             }
         }
         @catch (NSException *exception) {

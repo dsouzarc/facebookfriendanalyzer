@@ -163,13 +163,8 @@
 				9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */,
 				94B2B01C1B14E82900CFE01F /* AppDelegate.h */,
 				94B2B01D1B14E82900CFE01F /* AppDelegate.m */,
-				94B2B01F1B14E82900CFE01F /* ViewController.h */,
-				94B2B0201B14E82900CFE01F /* ViewController.m */,
-				94B2B0221B14E82900CFE01F /* Main.storyboard */,
-				94B2B0251B14E82900CFE01F /* Images.xcassets */,
 				94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
-				94B2B0181B14E82900CFE01F /* Supporting Files */,
 				941732671B15058F006B5F78 /* KeyChain */,
 				941732661B150587006B5F78 /* Login */,
 				949FAE751B547A0D00835D9B /* Person.h */,
@@ -180,6 +175,11 @@
 				949FAE7C1B547AC700835D9B /* Comment.m */,
 				949FAE7E1B547BE600835D9B /* Like.h */,
 				949FAE7F1B547BE600835D9B /* Like.m */,
+				94B2B01F1B14E82900CFE01F /* ViewController.h */,
+				94B2B0201B14E82900CFE01F /* ViewController.m */,
+				94B2B0221B14E82900CFE01F /* Main.storyboard */,
+				94B2B0251B14E82900CFE01F /* Images.xcassets */,
+				94B2B0181B14E82900CFE01F /* Supporting Files */,
 			);
 			path = "Facebook Friend Analyzer";
 			sourceTree = "<group>";

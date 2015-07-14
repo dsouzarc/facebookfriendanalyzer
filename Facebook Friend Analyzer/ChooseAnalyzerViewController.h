@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "DatabaseManager.h"
 
 @interface ChooseAnalyzerViewController : ViewController
 

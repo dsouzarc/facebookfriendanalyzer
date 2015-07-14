@@ -83,6 +83,21 @@
     
 }
 
+- (void) addPeopleToDatabase:(NSArray*)people
+{
+    char *errorMessage;
+    sqlite3_exec(self.database, "BEGIN TRANSACTION", NULL, NULL, &errorMessage);
+    
+    for(Person *person in people) {
+        NSString *insertSQL = [NSString stringWithFormat:@"insert into Person(personID, name, profilePicture) values ('%lld', '%@', '%@')",
+                               [person.id longLongValue], person.name, person.profilePicture];
+        if(![self executeStatement:insertSQL]) {
+            NSLog(@"PROBLEM INSERTING PERSON: %@\t%@", person.id, person.name);
+        }
+    }
+    sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
+}
+
 -(void) createLikeTable
 {
     NSString *createPostSQL = @"create table if not exists Like(personWhoLikedItID integer primary key, postID text)";
@@ -92,7 +107,6 @@
 -(void) addLikeToTable:(Like*)like
 {
     NSString *insertSQL = [NSString stringWithFormat:@"insert into Like(personWhoLikedItID, postID) values ('%@', '%@')", like.personWhoLikedItID, like.postID];
-    
     if(![self executeStatement:insertSQL]) {
         NSLog(@"PROBLEM INSERTING LIKE: %@\t%@", like.personWhoLikedItID, like.postID);
     }
