@@ -10,7 +10,7 @@
 
 @implementation Post
 
-- (instancetype) initWithMessage:(NSString *)message postID:(NSString *)postID time:(NSString *)time likes:(NSMutableArray *)likes comments:(NSMutableArray *)comments
+- (instancetype) initWithMessage:(NSString *)message postID:(NSString *)postID time:(NSString *)time
 {
     self = [super init];
     
@@ -18,8 +18,6 @@
         self.message = message;
         self.postID = postID;
         self.time = time;
-        self.likes = likes;
-        self.comments = comments;
     }
     return self;
 }

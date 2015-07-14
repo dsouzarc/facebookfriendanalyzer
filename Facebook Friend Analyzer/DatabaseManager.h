@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <sqlite3.h>
 
+#import "Person.h"
+#import "Post.h"
+#import "Like.h"
+#import "Comment.h"
+
 @interface DatabaseManager : NSObject
 
 + (id)databaseManager;

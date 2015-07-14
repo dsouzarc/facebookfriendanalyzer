@@ -84,7 +84,7 @@
 
 -(void) createPostTable
 {
-    NSString *createPostSQL = @"create table if not exists Post(postID integer primary key, message text, time text, likes text, comments text)";
+    NSString *createPostSQL = @"create table if not exists Post(postID integer primary key, message text, time text)";
     [self createTable:createPostSQL tableName:@"Post"];
 }
 
