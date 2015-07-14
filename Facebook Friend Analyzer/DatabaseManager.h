@@ -18,4 +18,9 @@
 
 + (id)databaseManager;
 
+-(void) addPersonToTable:(Person*)person;
+-(void) addLikeToTable:(Like*)like;
+-(void)addCommentToTable:(Comment*)comment;
+-(void)addPostToTable:(Post*)post;
+
 @end

@@ -57,8 +57,8 @@
         [self createPostTable];
         [self createLikeTable];
         [self createCommentTable];
-        
     }
+    
     return self;
 }
 
