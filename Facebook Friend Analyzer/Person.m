@@ -10,13 +10,14 @@
 
 @implementation Person
 
-- (instancetype) initWithID:(NSString *)id name:(NSString *)name
+- (instancetype) initWithID:(NSString *)id name:(NSString *)name profilePicture:(NSString *)profilePicture
 {
     self = [super init];
     
     if(self) {
         self.id = id;
         self.name = name;
+        self.profilePicture = profilePicture;
     }
     return self;
 }

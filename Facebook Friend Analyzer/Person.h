@@ -12,7 +12,8 @@
 
 @property(strong, nonatomic) NSString *id;
 @property(strong, nonatomic) NSString *name;
+@property(strong, nonatomic) NSString *profilePicture;
 
-- (instancetype) initWithID:(NSString*)id name:(NSString*)name;
+- (instancetype) initWithID:(NSString*)id name:(NSString*)name profilePicture:(NSString*)profilePicture;
 
 @end
