@@ -36,8 +36,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getFacebookFriends];
-    //[self getFacebookPosts];
+    //[self getFacebookFriends];
+    [self getFacebookPosts];
 }
 
 - (void) getFacebookPosts
@@ -56,36 +56,73 @@
             
             NSArray *postResults = formattedResults[@"data"];
             for(NSDictionary *dict in postResults) {
-                NSLog(@"%@", dict[@"message"]);
+                //NSLog(@"%@", dict[@"message"]);
             }
+            
+            NSDictionary *firstPost = postResults[1];
+            NSString *postID = firstPost[@"id"];
+            NSLog(@"Post ID: %@\t%@", postID, firstPost[@"message"]);
+            [self getFacebookLikesWithPostID:postID];
    
             NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
-            [self recursivelyGetPosts:pagingInformation[@"next"]];
+            //[self recursivelyGetPosts:pagingInformation[@"next"]];
         }
     }];
 }
 
-/*- (Person*)getPersonFromID:(NSString*)personID
+static int counter = 1;
+
+- (void) getFacebookLikesWithPostID:(NSString*)postID
 {
-    [[[FBSDKGraphRequest alloc] initWithGraphPath:personID parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+    NSString *urlRequest = [NSString stringWithFormat:@"%@/likes", postID];
+    NSLog(@"URL: %@", urlRequest);
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
-            NSLog(@"ERROR AT USER POSTS");
+            NSLog(@"ERROR AT USER POST LIKES");
             NSLog(error.description);
         }
         
         else {
             NSDictionary *formattedResults = (NSDictionary*) result;
+            NSArray *likeIDs = formattedResults[@"data"];
             
-            return new [[Person alloc] initWithID:formattedResults[@"id"] name:formattedResults[@"name"] profilePicture:NULL];
+            for(NSDictionary *like in likeIDs) {
+                NSLog(@"Liked it: %@\t%@\t\t\t%d", like[@"name"], like[@"id"], counter);
+                counter++;
+            }
+            
+            NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+            [self recursivelyGetFacebookLikesWithURL:pagingInformation[@"next"]];
         }
     }];
+}
 
-}*/
+- (void) recursivelyGetFacebookLikesWithURL:(NSString*)urlRequest
+{
+    NSLog(@"IN recurse");
+    NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlRequest] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+    
+    NSArray *likeResults = formattedResults[@"data"];
+    for(NSDictionary *dict in likeResults) {
+        NSLog(@"Liked it: %@\t%@\t\t\t%d", dict[@"name"], dict[@"id"], counter);
+        counter++;
+    }
+    
+    if(pagingInformation && pagingInformation[@"next"]) {
+        [self recursivelyGetFacebookLikesWithURL:pagingInformation[@"next"]];
+    }
+    else {
+        NSLog(@"No more next for FB URL..?");
+    }
+}
 
 - (void) recursivelyGetPosts:(NSString*)url
 {
     NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
-    
     NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
 
     NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
@@ -96,7 +133,7 @@
     }
 
     if(pagingInformation && pagingInformation[@"next"]) {
-        [self recursivelyGetPosts:pagingInformation[@"next"]];
+        //[self recursivelyGetPosts:pagingInformation[@"next"]];
     }
     
     else {
