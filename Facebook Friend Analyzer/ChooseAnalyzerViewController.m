@@ -42,6 +42,44 @@
 
 
 /****************************************
+ *       FACEBOOK COMMENTS
+ ****************************************/
+- (void) getFacebookCommentsWithFacebookPostID:(NSString*)postID
+{
+    NSString *urlRequest = [NSString stringWithFormat:@"%@/comments", postID];
+    
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        if(error) {
+            NSLog(@"ERROR AT USER COMMENTS");
+            NSLog(error.description);
+        }
+        
+        else {
+            NSDictionary *formattedResults = (NSDictionary*) result;
+            
+            NSArray *comments = formattedResults[@"data"];
+            for(NSDictionary *comment in comments) {
+                
+                NSDictionary *commenter = comment[@"from"];
+                NSString *commenterID = commenter[@"id"];
+                NSString *commenterName = commenter[@"name"];
+                
+                NSString *commentMessage = comment[@"message"];
+                NSString *commentTime = comment[@"created_time"];
+                NSString *commentID = comment[@"id"];
+                
+                NSLog(@"Comment: %@\t%@", commenterName, commentMessage);
+                
+                //Get sub comments
+                [self getFacebookCommentsWithFacebookPostID:commentID];
+            }
+        }
+    }];
+}
+
+
+
+/****************************************
 *       FACEBOOK POSTS
 ****************************************/
 
@@ -67,7 +105,7 @@
             NSDictionary *firstPost = postResults[1];
             NSString *postID = firstPost[@"id"];
             NSLog(@"Post ID: %@\t%@", postID, firstPost[@"message"]);
-            [self getFacebookLikesWithPostID:postID];
+            [self getFacebookCommentsWithFacebookPostID:postID];
    
             NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
             //[self recursivelyGetPosts:pagingInformation[@"next"]];
@@ -149,7 +187,7 @@
 
 
 /****************************************
- *       FACEBOOK COMMENTS
+ *       FACEBOOK FRIENDS
  ****************************************/
 
 - (void) getFacebookFriends
