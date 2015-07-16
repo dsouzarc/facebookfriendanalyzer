@@ -40,6 +40,11 @@
     [self getFacebookPosts];
 }
 
+
+/****************************************
+*       FACEBOOK POSTS
+****************************************/
+
 - (void) getFacebookPosts
 {
     //GET LIST OF FRIENDS
@@ -91,6 +96,11 @@
     }
 }
 
+
+/****************************************
+ *       FACEBOOK LIKES
+ ****************************************/
+
 - (void) getFacebookLikesWithPostID:(NSString*)postID
 {
     NSString *urlRequest = [NSString stringWithFormat:@"%@/likes", postID];
@@ -136,6 +146,11 @@
         NSLog(@"No more next for FB URL..?");
     }
 }
+
+
+/****************************************
+ *       FACEBOOK COMMENTS
+ ****************************************/
 
 - (void) getFacebookFriends
 {
@@ -204,6 +219,5 @@
         }
     }
 }
-
 
 @end
