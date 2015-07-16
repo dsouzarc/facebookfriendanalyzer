@@ -70,7 +70,26 @@
     }];
 }
 
-static int counter = 1;
+- (void) recursivelyGetPosts:(NSString*)url
+{
+    NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+    
+    NSArray *postResults = formattedResults[@"data"];
+    for(NSDictionary *dict in postResults) {
+        NSLog(@"%@", dict[@"message"]);
+    }
+    
+    if(pagingInformation && pagingInformation[@"next"]) {
+        //[self recursivelyGetPosts:pagingInformation[@"next"]];
+    }
+    
+    else {
+        NSLog(@"Here..?");
+    }
+}
 
 - (void) getFacebookLikesWithPostID:(NSString*)postID
 {
@@ -87,8 +106,7 @@ static int counter = 1;
             NSArray *likeIDs = formattedResults[@"data"];
             
             for(NSDictionary *like in likeIDs) {
-                NSLog(@"Liked it: %@\t%@\t\t\t%d", like[@"name"], like[@"id"], counter);
-                counter++;
+                NSLog(@"Liked it: %@\t%@", like[@"name"], like[@"id"]);
             }
             
             NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
@@ -108,8 +126,7 @@ static int counter = 1;
     
     NSArray *likeResults = formattedResults[@"data"];
     for(NSDictionary *dict in likeResults) {
-        NSLog(@"Liked it: %@\t%@\t\t\t%d", dict[@"name"], dict[@"id"], counter);
-        counter++;
+        NSLog(@"Liked it: %@\t%@", dict[@"name"], dict[@"id"]);
     }
     
     if(pagingInformation && pagingInformation[@"next"]) {
@@ -117,27 +134,6 @@ static int counter = 1;
     }
     else {
         NSLog(@"No more next for FB URL..?");
-    }
-}
-
-- (void) recursivelyGetPosts:(NSString*)url
-{
-    NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
-    NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
-
-    NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
-    
-    NSArray *postResults = formattedResults[@"data"];
-    for(NSDictionary *dict in postResults) {
-        NSLog(@"%@", dict[@"message"]);
-    }
-
-    if(pagingInformation && pagingInformation[@"next"]) {
-        //[self recursivelyGetPosts:pagingInformation[@"next"]];
-    }
-    
-    else {
-        NSLog(@"Here..?");
     }
 }
 
