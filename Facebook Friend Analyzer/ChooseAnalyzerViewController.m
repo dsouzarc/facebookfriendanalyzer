@@ -68,32 +68,25 @@
             
             NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
             if(pagingInformation && pagingInformation[@"next"]) {
-                [self getFacebookCommentsWithURL:pagingInformation[@"next"]];
+                [self getFacebookCommentsWithURL:pagingInformation[@"next"] postID:postID];
             }
         }
     }];
 }
 
-- (void) getFacebookCommentsWithURL:(NSString*)nextURL
+- (void) getFacebookCommentsWithURL:(NSString*)nextURL postID:(NSString*)postID
 {
     NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:nextURL] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
     NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     
     NSArray *comments = formattedResults[@"data"];
-    for(NSDictionary *comment in comments) {
-        NSDictionary *commenter = comment[@"from"];
-        NSString *commenterID = commenter[@"id"];
-        NSString *commenterName = commenter[@"name"];
-        
-        NSString *commentMessage = comment[@"message"];
-        NSString *commentTime = comment[@"created_time"];
-        NSString *commentID = comment[@"id"];
+    for(NSDictionary *commentDict in comments) {
+        Comment *comment = [[Comment alloc] initWithResponseDictionary:commentDict postID:postID];
     }
-    
     
     NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
     if(pagingInformation && pagingInformation[@"next"]) {
-        [self getFacebookCommentsWithURL:pagingInformation[@"next"]];
+        [self getFacebookCommentsWithURL:pagingInformation[@"next"] postID:postID];
     }
     
     else {
