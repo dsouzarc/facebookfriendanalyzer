@@ -47,16 +47,13 @@
  *       FACEBOOK COMMENTS
  ****************************************/
 
-static int counter = 1;
-
 - (void) getFacebookCommentsWithFacebookPostID:(NSString*)postID
 {
-    NSString *urlRequest = postID; //[NSString stringWithFormat:@"%@/comments", postID];
+    NSString *urlRequest = [NSString stringWithFormat:@"%@/comments", postID];
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
-            NSLog(@"ERROR AT USER COMMENTS");
-            NSLog(error.description);
+            NSLog(@"ERROR AT USER COMMENTS\t%@", [error description]);
         }
         
         else {
@@ -72,9 +69,6 @@ static int counter = 1;
                 NSString *commentMessage = comment[@"message"];
                 NSString *commentTime = comment[@"created_time"];
                 NSString *commentID = comment[@"id"];
-                
-                NSLog(@"Comment: %@\t%@\t%d", commenterName, commentMessage, counter);
-                counter++;
                 
                 //Get sub comments
                 [self getFacebookCommentsWithFacebookPostID:commentID];
@@ -102,10 +96,6 @@ static int counter = 1;
         NSString *commentMessage = comment[@"message"];
         NSString *commentTime = comment[@"created_time"];
         NSString *commentID = comment[@"id"];
-        
-        
-        NSLog(@"Comment: %@\t%@\t%d", commenterName, commentMessage, counter);
-        counter++;
     }
     
     
@@ -132,8 +122,7 @@ static int counter = 1;
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
-            NSLog(@"ERROR AT USER POSTS");
-            NSLog(error.description);
+            NSLog(@"ERROR AT USER POSTS\t%@", [error description]);
         }
         
         else {
@@ -187,8 +176,7 @@ static int counter = 1;
     NSLog(@"URL: %@", urlRequest);
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
-            NSLog(@"ERROR AT USER POST LIKES");
-            NSLog(error.description);
+            NSLog(@"ERROR AT USER LIKES\t%@", [error description]);
         }
         
         else {
@@ -207,7 +195,6 @@ static int counter = 1;
 
 - (void) recursivelyGetFacebookLikesWithURL:(NSString*)urlRequest
 {
-    NSLog(@"IN recurse");
     NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:urlRequest] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
     
     NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -239,8 +226,7 @@ static int counter = 1;
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
-            NSLog(@"ERROR AT USER TAGGABLE");
-            NSLog(error.description);
+            NSLog(@"ERROR AT USER FRIENDS TAGGABLE \t%@", [error description]);
         }
         
         else {
