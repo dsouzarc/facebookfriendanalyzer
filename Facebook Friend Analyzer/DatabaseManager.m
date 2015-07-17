@@ -121,13 +121,13 @@
 
 - (void) createCommentTable
 {
-    NSString *createPostSQL = @"create table if not exists Comment(commentID integer primary key, message text, personID text, postID text)";
+    NSString *createPostSQL = @"create table if not exists Comment(commentID integer primary key, message text, personID text, postID text, commentTime text)";
     [self createTable:createPostSQL tableName:@"Comment"];
 }
 
 - (void)addCommentToTable:(Comment*)comment
 {
-    NSString *insertSQL = [NSString stringWithFormat:@"insert into Comment(commentID, message, personID, postID) values ('%lld', '%@', '%@', '%@')", [comment.commentID longLongValue], comment.message, comment.personID, comment.postID];
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into Comment(commentID, message, personID, postID, commentTime) values ('%lld', '%@', '%@', '%@', '%@')", [comment.commentID longLongValue], comment.message, comment.personID, comment.postID, comment.commentTime];
     if(![self executeStatement:insertSQL]) {
         NSLog(@"PROBLEM INSERTING COMMENT: %@\t%@", comment.commentID, comment.message);
     }

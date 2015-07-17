@@ -38,8 +38,6 @@
     
     //[self getFacebookFriends];
     //[self getFacebookPosts];
-    
-    [self getFacebookCommentsWithFacebookPostID:@"10206653722558446/comments?limit=10"];
 }
 
 
@@ -47,7 +45,7 @@
  *       FACEBOOK COMMENTS
  ****************************************/
 
-- (void) getFacebookCommentsWithFacebookPostID:(NSString*)postID
+- (void) getFacebookCommentsWithFacebookPostOrCommentID:(NSString*)postID
 {
     NSString *urlRequest = [NSString stringWithFormat:@"%@/comments", postID];
     
@@ -60,18 +58,12 @@
             NSDictionary *formattedResults = (NSDictionary*) result;
             
             NSArray *comments = formattedResults[@"data"];
-            for(NSDictionary *comment in comments) {
+            for(NSDictionary *commentDict in comments) {
                 
-                NSDictionary *commenter = comment[@"from"];
-                NSString *commenterID = commenter[@"id"];
-                NSString *commenterName = commenter[@"name"];
-                
-                NSString *commentMessage = comment[@"message"];
-                NSString *commentTime = comment[@"created_time"];
-                NSString *commentID = comment[@"id"];
+                Comment *comment = [[Comment alloc] initWithResponseDictionary:commentDict postID:postID];
                 
                 //Get sub comments
-                [self getFacebookCommentsWithFacebookPostID:commentID];
+                [self getFacebookCommentsWithFacebookPostOrCommentID:comment.commentID];
             }
             
             NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
@@ -136,7 +128,7 @@
             NSDictionary *firstPost = postResults[1];
             NSString *postID = firstPost[@"id"];
             NSLog(@"Post ID: %@\t%@", postID, firstPost[@"message"]);
-            [self getFacebookCommentsWithFacebookPostID:postID];
+            [self getFacebookCommentsWithFacebookPostOrCommentID:postID];
    
             NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
             //[self recursivelyGetPosts:pagingInformation[@"next"]];
