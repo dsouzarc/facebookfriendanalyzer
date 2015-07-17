@@ -37,16 +37,21 @@
     [super viewDidLoad];
     
     //[self getFacebookFriends];
-    [self getFacebookPosts];
+    //[self getFacebookPosts];
+    
+    [self getFacebookCommentsWithFacebookPostID:@"10206653722558446/comments?limit=10"];
 }
 
 
 /****************************************
  *       FACEBOOK COMMENTS
  ****************************************/
+
+static int counter = 1;
+
 - (void) getFacebookCommentsWithFacebookPostID:(NSString*)postID
 {
-    NSString *urlRequest = [NSString stringWithFormat:@"%@/comments", postID];
+    NSString *urlRequest = postID; //[NSString stringWithFormat:@"%@/comments", postID];
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
@@ -68,13 +73,50 @@
                 NSString *commentTime = comment[@"created_time"];
                 NSString *commentID = comment[@"id"];
                 
-                NSLog(@"Comment: %@\t%@", commenterName, commentMessage);
+                NSLog(@"Comment: %@\t%@\t%d", commenterName, commentMessage, counter);
+                counter++;
                 
                 //Get sub comments
                 [self getFacebookCommentsWithFacebookPostID:commentID];
             }
+            
+            NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+            if(pagingInformation && pagingInformation[@"next"]) {
+                [self getFacebookCommentsWithURL:pagingInformation[@"next"]];
+            }
         }
     }];
+}
+
+- (void) getFacebookCommentsWithURL:(NSString*)nextURL
+{
+    NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:nextURL] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSArray *comments = formattedResults[@"data"];
+    for(NSDictionary *comment in comments) {
+        NSDictionary *commenter = comment[@"from"];
+        NSString *commenterID = commenter[@"id"];
+        NSString *commenterName = commenter[@"name"];
+        
+        NSString *commentMessage = comment[@"message"];
+        NSString *commentTime = comment[@"created_time"];
+        NSString *commentID = comment[@"id"];
+        
+        
+        NSLog(@"Comment: %@\t%@\t%d", commenterName, commentMessage, counter);
+        counter++;
+    }
+    
+    
+    NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+    if(pagingInformation && pagingInformation[@"next"]) {
+        [self getFacebookCommentsWithURL:pagingInformation[@"next"]];
+    }
+    
+    else {
+        NSLog(@"Here..?");
+    }
 }
 
 
