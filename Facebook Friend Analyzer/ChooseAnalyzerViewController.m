@@ -36,9 +36,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    //[self getFacebookFriends];
+    [self getFacebookFriends];
     //[self getFacebookPosts];
-    [self getFacebookPhotos];
+    //[self getFacebookPhotos];
 }
 
 
@@ -334,7 +334,7 @@
     
     else {
         [self.dbManager addPeopleToDatabase:[self.people allObjects]];
-        NSLog(@"Here..?");
+        NSLog(@"Done getting people");
     }
 }
 
@@ -344,7 +344,9 @@
         @try {
             NSString *personID = person[@"id"];
             NSString *name = person[@"name"];
+            
             NSDictionary *personData = person[@"picture"];
+            personData = personData[@"data"];
             NSString *pictureURL = personData[@"url"];
             
             Person *person = [[Person alloc] initWithID:personID name:name profilePicture:pictureURL];
