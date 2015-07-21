@@ -17,6 +17,13 @@
 
 @implementation DatabaseManager
 
+
+/****************************************
+ *       Constructor
+ ****************************************/
+
+# pragma mark - Constructor
+
 + (id) databaseManager
 {
     static DatabaseManager *databaseManager = nil;
@@ -62,6 +69,13 @@
     return self;
 }
 
+
+/****************************************
+ *       People
+ ****************************************/
+
+# pragma mark - People
+
 - (void) createPersonTable
 {
     NSString *createPostSQL = @"create table if not exists Person(personID integer primary key, name text, profilePicture text)";
@@ -94,6 +108,13 @@
     sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
 }
 
+
+/****************************************
+ *       Likes
+ ****************************************/
+
+# pragma mark - Likes
+
 - (void) createLikeTable
 {
     NSString *createPostSQL = @"create table if not exists Like(personWhoLikedItID integer primary key, postID text)";
@@ -118,6 +139,13 @@
     }
     sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
 }
+
+
+/****************************************
+ *       Comments
+ ****************************************/
+
+# pragma mark - Comments
 
 - (void) createCommentTable
 {
@@ -144,6 +172,13 @@
     sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
 }
 
+
+/****************************************
+ *       Posts
+ ****************************************/
+
+# pragma mark - Posts
+
 - (void) createPostTable
 {
     NSString *createPostSQL = @"create table if not exists Post(postID integer primary key, message text, time text)";
@@ -168,6 +203,13 @@
     }
     sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
 }
+
+
+/****************************************
+ *       Auxillary Methods
+ ****************************************/
+
+# pragma mark - AuxillaryMethods
 
 - (BOOL) executeStatement:(NSString*)sqlQuery
 {

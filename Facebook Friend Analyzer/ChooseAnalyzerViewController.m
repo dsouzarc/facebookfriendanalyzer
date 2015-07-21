@@ -45,9 +45,11 @@
  *       FACEBOOK COMMENTS
  ****************************************/
 
+# pragma mark - Comments
+
 - (void) getFacebookCommentsWithFacebookPostOrCommentID:(NSString*)postID
 {
-    NSString *urlRequest = [NSString stringWithFormat:@"%@/comments", postID];
+    NSString *urlRequest = [NSString stringWithFormat:@"%@/comments&limit=150", postID];
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
@@ -100,10 +102,12 @@
 *       FACEBOOK POSTS
 ****************************************/
 
+# pragma mark - Posts
+
 - (void) getFacebookPosts
 {
     //GET LIST OF FRIENDS
-    NSString *urlRequest = @"/me/feed?include_hidden=true";
+    NSString *urlRequest = @"/me/feed?include_hidden=true&limit=50";
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
@@ -155,9 +159,11 @@
  *       FACEBOOK LIKES
  ****************************************/
 
+# pragma mark - Likes
+
 - (void) getFacebookLikesWithPostID:(NSString*)postID
 {
-    NSString *urlRequest = [NSString stringWithFormat:@"%@/likes", postID];
+    NSString *urlRequest = [NSString stringWithFormat:@"%@/likes&limit=200", postID];
     NSLog(@"URL: %@", urlRequest);
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
@@ -203,6 +209,8 @@
 /****************************************
  *       FACEBOOK FRIENDS
  ****************************************/
+
+# pragma mark - Friends
 
 - (void) getFacebookFriends
 {
