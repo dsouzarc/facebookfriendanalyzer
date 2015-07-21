@@ -42,6 +42,68 @@
 
 
 /****************************************
+ *       FACEBOOK PHOTOS
+ ****************************************/
+
+# pragma mark - PHOTOS
+
+- (void) getFacebookPhotos
+{
+    [self getFacebookPhotos:@"uploaded"];
+    [self getFacebookPhotos:@"tagged"];
+}
+
+- (void) getFacebookPhotos:(NSString*)kindOfPhotos
+{
+    NSString *urlRequest = [NSString stringWithFormat:@"me/photos/%@?limit=700", kindOfPhotos];
+    
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        if(error) {
+            NSLog(@"ERROR AT USER PHOTOS\t%@", [error description]);
+        }
+        
+        else {
+            NSDictionary *formattedResults = (NSDictionary*) result;
+            
+            NSArray *photos = formattedResults[@"data"];
+            for(NSDictionary *photo in photos) {
+                
+                Post *post = [[Post alloc] initWithMessage:photo[@"name"] postID:photo[@"id"] time:photo[@"created_time"]];
+                
+                //Get sub comments
+                [self getFacebookCommentsWithFacebookPostOrCommentID:post.postID];
+            }
+            
+            NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+            if(pagingInformation && pagingInformation[@"next"]) {
+                [self getFacebookPhotosWithURL:pagingInformation[@"next"]];
+            }
+        }
+    }];
+}
+
+- (void) getFacebookPhotosWithURL:(NSString*)photosURL
+{
+    NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:photosURL] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSArray *photos = formattedResults[@"data"];
+    for(NSDictionary *photo in photos) {
+        Post *post = [[Post alloc] initWithMessage:photo[@"name"] postID:photo[@"id"] time:photo[@"created_time"]];
+    }
+    
+    NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+    if(pagingInformation && pagingInformation[@"next"]) {
+        [self getFacebookPhotosWithURL:pagingInformation[@"next"]];
+    }
+    
+    else {
+        NSLog(@"Here..?");
+    }
+}
+
+
+/****************************************
  *       FACEBOOK COMMENTS
  ****************************************/
 
@@ -95,7 +157,6 @@
         NSLog(@"Here..?");
     }
 }
-
 
 
 /****************************************
@@ -163,7 +224,7 @@
 
 - (void) getFacebookLikesWithPostID:(NSString*)postID
 {
-    NSString *urlRequest = [NSString stringWithFormat:@"%@/likes&limit=200", postID];
+    NSString *urlRequest = [NSString stringWithFormat:@"%@/likes&limit=700", postID];
     NSLog(@"URL: %@", urlRequest);
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
