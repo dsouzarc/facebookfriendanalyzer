@@ -8,6 +8,6 @@
 
 #import "ViewController.h"
 
-@interface GetFacebookFriendsViewController : ViewController
+@interface GetFacebookFriendsViewController : ViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

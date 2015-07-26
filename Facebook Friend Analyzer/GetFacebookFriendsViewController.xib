@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GetFacebookFriendsViewController">
             <connections>
+                <outlet property="friendsTableView" destination="EDD-LK-Ndt" id="NgL-Ez-dxK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="BLj-tb-wku"/>
             </connections>
         </placeholder>
@@ -18,7 +19,11 @@
                     <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                     <items>
                         <navigationItem title="Facebook Friends" id="BbA-Ln-0Ak">
-                            <barButtonItem key="leftBarButtonItem" title="Back" id="B0w-WJ-DNW"/>
+                            <barButtonItem key="leftBarButtonItem" title="Back" id="B0w-WJ-DNW">
+                                <connections>
+                                    <action selector="backToMainViewController:" destination="-1" id="mst-2d-3hs"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
