@@ -12,6 +12,8 @@
 		941732651B1504ED006B5F78 /* UICKeyChainStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 941732641B1504ED006B5F78 /* UICKeyChainStore.m */; };
 		94509A011B63559200DC2212 /* MainFriendAnalyzerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 945099FF1B63559200DC2212 /* MainFriendAnalyzerViewController.m */; };
 		94509A021B63559200DC2212 /* MainFriendAnalyzerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94509A001B63559200DC2212 /* MainFriendAnalyzerViewController.xib */; };
+		94509A061B64A95700DC2212 /* GetFacebookFriendsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94509A041B64A95700DC2212 /* GetFacebookFriendsViewController.m */; };
+		94509A071B64A95700DC2212 /* GetFacebookFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94509A051B64A95700DC2212 /* GetFacebookFriendsViewController.xib */; };
 		949FAE771B547A0D00835D9B /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE761B547A0D00835D9B /* Person.m */; };
 		949FAE7A1B547A9500835D9B /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE791B547A9500835D9B /* Post.m */; };
 		949FAE7D1B547AC700835D9B /* Comment.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE7C1B547AC700835D9B /* Comment.m */; };
@@ -52,6 +54,9 @@
 		945099FE1B63559200DC2212 /* MainFriendAnalyzerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainFriendAnalyzerViewController.h; sourceTree = "<group>"; };
 		945099FF1B63559200DC2212 /* MainFriendAnalyzerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainFriendAnalyzerViewController.m; sourceTree = "<group>"; };
 		94509A001B63559200DC2212 /* MainFriendAnalyzerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainFriendAnalyzerViewController.xib; sourceTree = "<group>"; };
+		94509A031B64A95700DC2212 /* GetFacebookFriendsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GetFacebookFriendsViewController.h; sourceTree = "<group>"; };
+		94509A041B64A95700DC2212 /* GetFacebookFriendsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GetFacebookFriendsViewController.m; sourceTree = "<group>"; };
+		94509A051B64A95700DC2212 /* GetFacebookFriendsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GetFacebookFriendsViewController.xib; sourceTree = "<group>"; };
 		949FAE751B547A0D00835D9B /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		949FAE761B547A0D00835D9B /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		949FAE781B547A9500835D9B /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
@@ -161,6 +166,9 @@
 		94B2B0171B14E82900CFE01F /* Facebook Friend Analyzer */ = {
 			isa = PBXGroup;
 			children = (
+				94509A031B64A95700DC2212 /* GetFacebookFriendsViewController.h */,
+				94509A041B64A95700DC2212 /* GetFacebookFriendsViewController.m */,
+				94509A051B64A95700DC2212 /* GetFacebookFriendsViewController.xib */,
 				945099FE1B63559200DC2212 /* MainFriendAnalyzerViewController.h */,
 				945099FF1B63559200DC2212 /* MainFriendAnalyzerViewController.m */,
 				94509A001B63559200DC2212 /* MainFriendAnalyzerViewController.xib */,
@@ -299,6 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9417325D1B150200006B5F78 /* ChooseAnalyzerViewController.xib in Resources */,
+				94509A071B64A95700DC2212 /* GetFacebookFriendsViewController.xib in Resources */,
 				94509A021B63559200DC2212 /* MainFriendAnalyzerViewController.xib in Resources */,
 				94B2B0481B14EB0B00CFE01F /* LoginViewController.xib in Resources */,
 				94B2B0241B14E82900CFE01F /* Main.storyboard in Resources */,
@@ -324,6 +333,7 @@
 			files = (
 				949FAE801B547BE600835D9B /* Like.m in Sources */,
 				94B2B0471B14EB0B00CFE01F /* LoginViewController.m in Sources */,
+				94509A061B64A95700DC2212 /* GetFacebookFriendsViewController.m in Sources */,
 				94B2B0211B14E82900CFE01F /* ViewController.m in Sources */,
 				94509A011B63559200DC2212 /* MainFriendAnalyzerViewController.m in Sources */,
 				949FAE771B547A0D00835D9B /* Person.m in Sources */,

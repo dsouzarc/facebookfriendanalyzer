@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GetFacebookFriendsViewController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="BLj-tb-wku"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kGv-Fp-hew">
+                    <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <items>
+                        <navigationItem title="Facebook Friends" id="BbA-Ln-0Ak">
+                            <barButtonItem key="leftBarButtonItem" title="Back" id="B0w-WJ-DNW"/>
+                        </navigationItem>
+                    </items>
+                </navigationBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EDD-LK-Ndt">
+                    <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="Aez-JP-eR7"/>
+                        <outlet property="delegate" destination="-1" id="KM7-Q7-iyO"/>
+                    </connections>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="kGv-Fp-hew" secondAttribute="trailing" id="4Fe-Mk-cYR"/>
+                <constraint firstItem="kGv-Fp-hew" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="MGB-Xr-p4j"/>
+                <constraint firstItem="EDD-LK-Ndt" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Q1K-d0-zoq"/>
+                <constraint firstItem="EDD-LK-Ndt" firstAttribute="top" secondItem="kGv-Fp-hew" secondAttribute="bottom" id="Ubj-4N-exI"/>
+                <constraint firstItem="kGv-Fp-hew" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Wmm-Zw-v0Q"/>
+                <constraint firstItem="EDD-LK-Ndt" firstAttribute="top" secondItem="kGv-Fp-hew" secondAttribute="bottom" id="gBz-Wa-ErV"/>
+                <constraint firstAttribute="bottom" secondItem="EDD-LK-Ndt" secondAttribute="bottom" id="lFZ-7B-k9S"/>
+                <constraint firstAttribute="trailing" secondItem="EDD-LK-Ndt" secondAttribute="trailing" id="pOv-gt-bRX"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="387.5" y="252.5"/>
+        </view>
+    </objects>
+</document>
