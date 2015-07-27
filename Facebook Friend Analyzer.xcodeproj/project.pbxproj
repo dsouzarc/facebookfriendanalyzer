@@ -147,14 +147,109 @@
 			name = "Facebook Libraries";
 			sourceTree = "<group>";
 		};
-		94B2B00C1B14E82900CFE01F = {
+		94509A0D1B65FCF400DC2212 /* Facebook Posts */ = {
+			isa = PBXGroup;
+			children = (
+				94509A081B65FC2800DC2212 /* GetFacebookPostsViewController.h */,
+				94509A091B65FC2800DC2212 /* GetFacebookPostsViewController.m */,
+				94509A0A1B65FC2800DC2212 /* GetFacebookPostsViewController.xib */,
+			);
+			name = "Facebook Posts";
+			sourceTree = "<group>";
+		};
+		94509A0E1B65FD0800DC2212 /* Facebook Friends */ = {
+			isa = PBXGroup;
+			children = (
+				94509A031B64A95700DC2212 /* GetFacebookFriendsViewController.h */,
+				94509A041B64A95700DC2212 /* GetFacebookFriendsViewController.m */,
+				94509A051B64A95700DC2212 /* GetFacebookFriendsViewController.xib */,
+			);
+			name = "Facebook Friends";
+			sourceTree = "<group>";
+		};
+		94509A0F1B65FD1200DC2212 /* Database Manager */ = {
+			isa = PBXGroup;
+			children = (
+				949FAE811B547C7700835D9B /* DatabaseManager.h */,
+				949FAE821B547C7700835D9B /* DatabaseManager.m */,
+			);
+			name = "Database Manager";
+			sourceTree = "<group>";
+		};
+		94509A101B65FD2100DC2212 /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				94509A111B65FD3200DC2212 /* Person */,
+				94509A121B65FD3900DC2212 /* Post */,
+				94509A131B65FD4000DC2212 /* Comment */,
+				94509A141B65FD4C00DC2212 /* Like */,
+			);
+			name = Objects;
+			sourceTree = "<group>";
+		};
+		94509A111B65FD3200DC2212 /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				949FAE751B547A0D00835D9B /* Person.h */,
+				949FAE761B547A0D00835D9B /* Person.m */,
+			);
+			name = Person;
+			sourceTree = "<group>";
+		};
+		94509A121B65FD3900DC2212 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				949FAE781B547A9500835D9B /* Post.h */,
+				949FAE791B547A9500835D9B /* Post.m */,
+			);
+			name = Post;
+			sourceTree = "<group>";
+		};
+		94509A131B65FD4000DC2212 /* Comment */ = {
+			isa = PBXGroup;
+			children = (
+				949FAE7B1B547AC700835D9B /* Comment.h */,
+				949FAE7C1B547AC700835D9B /* Comment.m */,
+			);
+			name = Comment;
+			sourceTree = "<group>";
+		};
+		94509A141B65FD4C00DC2212 /* Like */ = {
+			isa = PBXGroup;
+			children = (
+				949FAE7E1B547BE600835D9B /* Like.h */,
+				949FAE7F1B547BE600835D9B /* Like.m */,
+			);
+			name = Like;
+			sourceTree = "<group>";
+		};
+		94509A151B65FD7800DC2212 /* iOS Libraries */ = {
 			isa = PBXGroup;
 			children = (
 				949FAE861B547CEE00835D9B /* libsqlite3.dylib */,
 				949FAE841B547C8300835D9B /* libsqlite3.0.dylib */,
+			);
+			name = "iOS Libraries";
+			sourceTree = "<group>";
+		};
+		94509A161B65FD9700DC2212 /* Default Files */ = {
+			isa = PBXGroup;
+			children = (
+				94B2B01F1B14E82900CFE01F /* ViewController.h */,
+				94B2B0201B14E82900CFE01F /* ViewController.m */,
+				94B2B0221B14E82900CFE01F /* Main.storyboard */,
+				94B2B0251B14E82900CFE01F /* Images.xcassets */,
+			);
+			name = "Default Files";
+			sourceTree = "<group>";
+		};
+		94B2B00C1B14E82900CFE01F = {
+			isa = PBXGroup;
+			children = (
 				94B2B0171B14E82900CFE01F /* Facebook Friend Analyzer */,
 				941732681B1505A4006B5F78 /* Facebook Libraries */,
 				94B2B0311B14E82A00CFE01F /* Facebook Friend AnalyzerTests */,
+				94509A151B65FD7800DC2212 /* iOS Libraries */,
 				94B2B0161B14E82900CFE01F /* Products */,
 			);
 			sourceTree = "<group>";
@@ -171,38 +266,23 @@
 		94B2B0171B14E82900CFE01F /* Facebook Friend Analyzer */ = {
 			isa = PBXGroup;
 			children = (
-				94509A081B65FC2800DC2212 /* GetFacebookPostsViewController.h */,
-				94509A091B65FC2800DC2212 /* GetFacebookPostsViewController.m */,
-				94509A0A1B65FC2800DC2212 /* GetFacebookPostsViewController.xib */,
-				94509A031B64A95700DC2212 /* GetFacebookFriendsViewController.h */,
-				94509A041B64A95700DC2212 /* GetFacebookFriendsViewController.m */,
-				94509A051B64A95700DC2212 /* GetFacebookFriendsViewController.xib */,
 				945099FE1B63559200DC2212 /* MainFriendAnalyzerViewController.h */,
 				945099FF1B63559200DC2212 /* MainFriendAnalyzerViewController.m */,
 				94509A001B63559200DC2212 /* MainFriendAnalyzerViewController.xib */,
-				949FAE811B547C7700835D9B /* DatabaseManager.h */,
-				949FAE821B547C7700835D9B /* DatabaseManager.m */,
+				94509A0D1B65FCF400DC2212 /* Facebook Posts */,
+				94509A0E1B65FD0800DC2212 /* Facebook Friends */,
+				94509A0F1B65FD1200DC2212 /* Database Manager */,
 				941732591B150200006B5F78 /* ChooseAnalyzerViewController.h */,
 				9417325A1B150200006B5F78 /* ChooseAnalyzerViewController.m */,
 				9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */,
+				94509A101B65FD2100DC2212 /* Objects */,
 				94B2B01C1B14E82900CFE01F /* AppDelegate.h */,
 				94B2B01D1B14E82900CFE01F /* AppDelegate.m */,
 				94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
 				941732671B15058F006B5F78 /* KeyChain */,
 				941732661B150587006B5F78 /* Login */,
-				949FAE751B547A0D00835D9B /* Person.h */,
-				949FAE761B547A0D00835D9B /* Person.m */,
-				949FAE781B547A9500835D9B /* Post.h */,
-				949FAE791B547A9500835D9B /* Post.m */,
-				949FAE7B1B547AC700835D9B /* Comment.h */,
-				949FAE7C1B547AC700835D9B /* Comment.m */,
-				949FAE7E1B547BE600835D9B /* Like.h */,
-				949FAE7F1B547BE600835D9B /* Like.m */,
-				94B2B01F1B14E82900CFE01F /* ViewController.h */,
-				94B2B0201B14E82900CFE01F /* ViewController.m */,
-				94B2B0221B14E82900CFE01F /* Main.storyboard */,
-				94B2B0251B14E82900CFE01F /* Images.xcassets */,
+				94509A161B65FD9700DC2212 /* Default Files */,
 				94B2B0181B14E82900CFE01F /* Supporting Files */,
 			);
 			path = "Facebook Friend Analyzer";
