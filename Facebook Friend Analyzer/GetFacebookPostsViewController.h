@@ -8,6 +8,6 @@
 
 #import "ViewController.h"
 
-@interface GetFacebookPostsViewController : ViewController
+@interface GetFacebookPostsViewController : ViewController <UITableViewDelegate, UITableViewDataSource>
 
 @end
