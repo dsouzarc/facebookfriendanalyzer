@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWa-hA-FLs">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HWa-hA-FLs">
                     <rect key="frame" x="8" y="60" width="359" height="30"/>
                     <state key="normal" title="Get Facebook Friends">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -23,7 +23,7 @@
                         <action selector="getFacebookFriends:" destination="-1" eventType="touchUpInside" id="5MI-SV-te3"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QB-Zg-wxT">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8QB-Zg-wxT">
                     <rect key="frame" x="8" y="150" width="359" height="30"/>
                     <state key="normal" title="Get Facebook Posts">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -32,25 +32,7 @@
                         <action selector="getFacebookPosts:" destination="-1" eventType="touchUpInside" id="M1e-ON-RlJ"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaK-0c-akf">
-                    <rect key="frame" x="8" y="330" width="359" height="30"/>
-                    <state key="normal" title="Get Facebook Videos">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="getFacebookVideos:" destination="-1" eventType="touchUpInside" id="bLr-N4-nhW"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArJ-sz-5t4">
-                    <rect key="frame" x="8" y="420" width="359" height="30"/>
-                    <state key="normal" title="View Results">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="viewResults:" destination="-1" eventType="touchUpInside" id="gRd-Tb-tMy"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDX-47-2px">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bDX-47-2px">
                     <rect key="frame" x="8" y="240" width="359" height="30"/>
                     <state key="normal" title="Get Facebook Pictures">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,8 +41,52 @@
                         <action selector="getFacebookPictures:" destination="-1" eventType="touchUpInside" id="TaT-jU-6TV"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UaK-0c-akf">
+                    <rect key="frame" x="8" y="330" width="359" height="30"/>
+                    <state key="normal" title="Get Facebook Videos">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="getFacebookVideos:" destination="-1" eventType="touchUpInside" id="bLr-N4-nhW"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ArJ-sz-5t4">
+                    <rect key="frame" x="8" y="420" width="359" height="30"/>
+                    <state key="normal" title="View Results">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="viewResults:" destination="-1" eventType="touchUpInside" id="gRd-Tb-tMy"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V3x-Fq-KQ9">
+                    <rect key="frame" x="8" y="510" width="359" height="30"/>
+                    <state key="normal" title="About">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="UaK-0c-akf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="99A-D6-uzg"/>
+                <constraint firstItem="HWa-hA-FLs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="9L6-gH-YpQ"/>
+                <constraint firstItem="bDX-47-2px" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="AdV-Ig-pIP"/>
+                <constraint firstAttribute="trailing" secondItem="bDX-47-2px" secondAttribute="trailing" constant="8" id="Iyi-Y4-ral"/>
+                <constraint firstItem="bDX-47-2px" firstAttribute="top" secondItem="8QB-Zg-wxT" secondAttribute="bottom" constant="60" id="Kaq-Bq-Vyq"/>
+                <constraint firstItem="ArJ-sz-5t4" firstAttribute="top" secondItem="UaK-0c-akf" secondAttribute="bottom" constant="60" id="Ns1-cg-dB3"/>
+                <constraint firstAttribute="trailing" secondItem="HWa-hA-FLs" secondAttribute="trailing" constant="8" id="PTR-g6-f6p"/>
+                <constraint firstAttribute="trailing" secondItem="V3x-Fq-KQ9" secondAttribute="trailing" constant="8" id="QIp-BR-Gcb"/>
+                <constraint firstItem="HWa-hA-FLs" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="60" id="T7t-3I-JIj"/>
+                <constraint firstItem="8QB-Zg-wxT" firstAttribute="top" secondItem="HWa-hA-FLs" secondAttribute="bottom" constant="60" id="ZZi-pe-pFe"/>
+                <constraint firstItem="8QB-Zg-wxT" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="bjB-h4-yMo"/>
+                <constraint firstItem="ArJ-sz-5t4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="ctu-CY-DOq"/>
+                <constraint firstAttribute="trailing" secondItem="UaK-0c-akf" secondAttribute="trailing" constant="8" id="fny-rQ-fKH"/>
+                <constraint firstItem="UaK-0c-akf" firstAttribute="top" secondItem="bDX-47-2px" secondAttribute="bottom" constant="60" id="fvl-6A-KM0"/>
+                <constraint firstItem="V3x-Fq-KQ9" firstAttribute="top" secondItem="ArJ-sz-5t4" secondAttribute="bottom" constant="60" id="kUZ-Jy-Bj3"/>
+                <constraint firstAttribute="trailing" secondItem="ArJ-sz-5t4" secondAttribute="trailing" constant="8" id="m0e-i1-Uyd"/>
+                <constraint firstItem="V3x-Fq-KQ9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="8" id="uaO-38-GjO"/>
+                <constraint firstAttribute="trailing" secondItem="8QB-Zg-wxT" secondAttribute="trailing" constant="8" id="zFm-91-ayy"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="352.5" y="372.5"/>
         </view>
