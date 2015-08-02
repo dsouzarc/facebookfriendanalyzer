@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GetFacebookFriendsViewController">
             <connections>
+                <outlet property="findFriendsSearchBar" destination="YhB-GG-yAc" id="PCY-Hu-J5S"/>
                 <outlet property="friendsTableView" destination="EDD-LK-Ndt" id="NgL-Ez-dxK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="BLj-tb-wku"/>
             </connections>
@@ -27,19 +28,21 @@
                         </navigationItem>
                     </items>
                 </navigationBar>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0WO-HH-jHe">
-                    <rect key="frame" x="8" y="72" width="359" height="30"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EDD-LK-Ndt">
-                    <rect key="frame" x="0.0" y="110" width="375" height="532"/>
+                    <rect key="frame" x="0.0" y="108" width="375" height="551"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="Aez-JP-eR7"/>
                         <outlet property="delegate" destination="-1" id="KM7-Q7-iyO"/>
                     </connections>
                 </tableView>
+                <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YhB-GG-yAc">
+                    <rect key="frame" x="0.0" y="64" width="375" height="44"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="u6t-M9-xf9"/>
+                    </connections>
+                </searchBar>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
