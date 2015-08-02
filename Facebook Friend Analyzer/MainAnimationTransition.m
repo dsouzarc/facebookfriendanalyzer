@@ -19,12 +19,6 @@
     return self;
 }
 
-- (NSTimeInterval) transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
-{
-    return 1.0;
-}
-
-
 
 - (id <UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
 {
@@ -41,6 +35,11 @@
 - (void)animationEnded:(BOOL)transitionCompleted
 {
     self.presentViewController = NO;
+}
+
+- (NSTimeInterval) transitionDuration:(id<UIViewControllerContextTransitioning>)transitionContext
+{
+    return 1.0;
 }
 
 - (void) animateTransition:(id<UIViewControllerContextTransitioning>)transitionContext

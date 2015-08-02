@@ -36,7 +36,6 @@
 }
 
 - (IBAction)getFacebookFriends:(id)sender {
-    
     self.transitioner.presentViewController = YES;
     [self presentViewController:self.facebookFriendsVC animated:YES completion:nil];
 }
