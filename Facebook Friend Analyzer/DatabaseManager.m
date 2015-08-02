@@ -17,6 +17,7 @@
 
 @implementation DatabaseManager
 
+static DatabaseManager *databaseManager = nil;
 
 /****************************************
  *       Constructor
@@ -26,8 +27,6 @@
 
 + (id) databaseManager
 {
-    static DatabaseManager *databaseManager = nil;
-    
     @synchronized(self) {
         if(databaseManager == nil) {
             databaseManager = [[DatabaseManager alloc] init];
@@ -45,19 +44,29 @@
         NSArray *dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
         NSString *docsDir = dirPaths[0];
         self.databasePath = [[NSString alloc] initWithString:[docsDir stringByAppendingPathComponent: @"facebook.db"]];
+        const char *dbpath = [self.databasePath UTF8String];
         
-        if (![[NSFileManager defaultManager] fileExistsAtPath: self.databasePath]) {
-            
-            const char *dbpath = [self.databasePath UTF8String];
+        if ([[NSFileManager defaultManager] fileExistsAtPath: self.databasePath]) {
             if (sqlite3_open(dbpath, &_database) == SQLITE_OK) {
-                NSLog(@"Database created");
+                NSLog(@"Database found and opened");
             }
             else {
-                NSLog(@"Failed to open/create database");
+                NSLog(@"Failed to open database: %s", sqlite3_errmsg(_database));
             }
         }
         else {
-            NSLog(@"Problem creating DB");
+            NSError *error;
+            if (![[NSFileManager defaultManager] createDirectoryAtPath:self.databasePath withIntermediateDirectories:YES attributes:nil error:&error]) {
+                NSLog(@"Error creating database: %@", error.description);
+            }
+            else {
+                if (sqlite3_open(dbpath, &_database) == SQLITE_OK) {
+                    NSLog(@"Database created and opened");
+                }
+                else {
+                    NSLog(@"Failed to create and open database");
+                }
+            }
         }
         
         [self createPersonTable];
@@ -87,7 +96,7 @@
 
 - (void) createPersonTable
 {
-    NSString *createPostSQL = @"create table if not exists Person(personID integer primary key, name text, profilePicture text)";
+    NSString *createPostSQL = @"create table if not exists Person(dbID integer primary key autoincrement, personID text, name text, profilePicture text)";
     [self createTable:createPostSQL tableName:@"Person"];
 }
 
@@ -99,7 +108,12 @@
         personID = [NSString stringWithFormat:@"%ld", person.name.hash];
     }
     
-    NSString *insertSQL = [NSString stringWithFormat:@"insert into Person(personID, name, profilePicture) values ('%lld', '%@', '%@')", [person.id longLongValue], person.name, person.profilePicture];
+    NSString *name = person.name;
+    if([name containsString:@"'"]) {
+        name = [name stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
+    }
+    
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into Person(personID, name, profilePicture) values ('%@', '%@', '%@')", person.id, name, person.profilePicture];
     if(![self executeStatement:insertSQL]) {
         NSLog(@"PROBLEM INSERTING PERSON: %@\t%@", person.id, person.name);
     }
@@ -115,6 +129,34 @@
         [self addPersonToTable:person];
     }
     sqlite3_exec(self.database, "COMMIT TRANSACTION", NULL, NULL, &errorMessage);
+}
+
+- (NSMutableArray*) getAllPeople
+{
+    NSMutableArray *allPeople = [[NSMutableArray alloc] init];
+    
+    sqlite3_stmt *statement;
+    char *allPeopleQuery = "SELECT * FROM Person";
+    
+    if(sqlite3_prepare_v2(self.database, allPeopleQuery, -1, &statement, NULL) == SQLITE_OK) {
+        while(sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *personID = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 1)];
+            NSString *name = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 2)];
+            NSString *linkToProfPic = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)];
+            
+            if([name containsString:@"''"]) {
+                name = [name stringByReplacingOccurrencesOfString:@"''" withString:@"'"];
+            }
+            
+            Person *person = [[Person alloc] initWithID:personID name:name profilePicture:linkToProfPic];
+            [allPeople addObject:person];
+        }
+    }
+    else {
+        printf("ERROR GETTING ALL PEOPLE FROM DB: %s\n", sqlite3_errmsg(self.database));
+    }
+    
+    return allPeople;
 }
 
 
@@ -226,8 +268,12 @@
     
     sqlite3_prepare_v2(_database, [sqlQuery UTF8String], -1, &statement, NULL);
     if (sqlite3_step(statement) != SQLITE_DONE) {
+        printf("ERROR EXECUTING: %s\t%s\n", [sqlQuery UTF8String], sqlite3_errmsg(_database));
         return false;
     }
+    
+    sqlite3_finalize(statement);
+    
     return true;
 }
 
@@ -237,7 +283,7 @@
     
     char *errorMessage;
     if(sqlite3_exec(_database, sqlStatement, NULL, NULL, &errorMessage) != SQLITE_OK) {
-        printf("ERROR CREATING table: %s\t%s\n", [tableName UTF8String], errorMessage);
+        printf("ERROR CREATING table: %s\t%s\n", [tableName UTF8String], sqlite3_errmsg(_database));
     }
     else {
         printf("Table created: %s\n", [tableName UTF8String]);

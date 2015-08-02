@@ -22,6 +22,8 @@
 - (void) addPersonToTable:(Person*)person;
 - (void) addPeopleToDatabase:(NSArray*)people;
 
+- (NSMutableArray*) getAllPeople;
+
 - (void) addLikeToTable:(Like*)like;
 - (void) addLikesToTable:(NSArray*)likes;
 
