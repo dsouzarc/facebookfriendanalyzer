@@ -18,6 +18,7 @@
 
 + (id)databaseManager;
 
+- (void) deleteAllPeople;
 - (void) addPersonToTable:(Person*)person;
 - (void) addPeopleToDatabase:(NSArray*)people;
 

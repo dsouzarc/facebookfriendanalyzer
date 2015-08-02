@@ -76,6 +76,15 @@
 
 # pragma mark - People
 
+- (void) deleteAllPeople
+{
+    NSString *deleteAllSQL = [@"DELETE FROM Person"];
+    
+    if(![self executeStatement:deleteAllSQL]) {
+        NSLog(@"PROBLEM DELETING ALL PEOPLE");
+    }
+}
+
 - (void) createPersonTable
 {
     NSString *createPostSQL = @"create table if not exists Person(personID integer primary key, name text, profilePicture text)";
