@@ -246,6 +246,15 @@
 			name = "Default Files";
 			sourceTree = "<group>";
 		};
+		94B0BF681B6E14F7008F84D1 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				94B0BF651B6D86EC008F84D1 /* MainAnimationTransition.h */,
+				94B0BF661B6D86EC008F84D1 /* MainAnimationTransition.m */,
+			);
+			name = Transitions;
+			sourceTree = "<group>";
+		};
 		94B2B00C1B14E82900CFE01F = {
 			isa = PBXGroup;
 			children = (
@@ -269,8 +278,6 @@
 		94B2B0171B14E82900CFE01F /* Facebook Friend Analyzer */ = {
 			isa = PBXGroup;
 			children = (
-				94B0BF651B6D86EC008F84D1 /* MainAnimationTransition.h */,
-				94B0BF661B6D86EC008F84D1 /* MainAnimationTransition.m */,
 				945099FE1B63559200DC2212 /* MainFriendAnalyzerViewController.h */,
 				945099FF1B63559200DC2212 /* MainFriendAnalyzerViewController.m */,
 				94509A001B63559200DC2212 /* MainFriendAnalyzerViewController.xib */,
@@ -280,6 +287,7 @@
 				941732591B150200006B5F78 /* ChooseAnalyzerViewController.h */,
 				9417325A1B150200006B5F78 /* ChooseAnalyzerViewController.m */,
 				9417325B1B150200006B5F78 /* ChooseAnalyzerViewController.xib */,
+				94B0BF681B6E14F7008F84D1 /* Transitions */,
 				94509A101B65FD2100DC2212 /* Objects */,
 				94B2B01C1B14E82900CFE01F /* AppDelegate.h */,
 				94B2B01D1B14E82900CFE01F /* AppDelegate.m */,

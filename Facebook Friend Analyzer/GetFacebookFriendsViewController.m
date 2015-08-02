@@ -43,83 +43,13 @@
     return self;
 }
 
-- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
-{
-    [self.autoCompleteFriendsToShow removeAllObjects];
-    
-    for(NSString *name in self.allFriends.allKeys) {
-        if([[name lowercaseString] containsString:[searchText lowercaseString]]) {
-            [self.autoCompleteFriendsToShow addObject:name];
-        }
-    }
-    
-    if(searchText.length == 0) {
-        [self.autoCompleteFriendsToShow removeAllObjects];
-        [self.autoCompleteFriendsToShow addObjectsFromArray:self.allFriends.allKeys];
-    }
-    
-    self.autoCompleteFriendsToShow = [NSMutableArray arrayWithArray:[self.autoCompleteFriendsToShow sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]];
-    
-    [self.friendsTableView reloadData];
-    
-}
-
-- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
-{
-    [self.autoCompleteFriendsToShow removeAllObjects];
-    [self.autoCompleteFriendsToShow addObjectsFromArray:self.allFriends.allKeys];
-    self.autoCompleteFriendsToShow = [NSMutableArray arrayWithArray:[self.autoCompleteFriendsToShow sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]];
-    [self.friendsTableView reloadData];
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //[self getFacebookFriends];
 }
 
-- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
-    if(!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
-    }
-    
-    NSString *name = self.autoCompleteFriendsToShow[indexPath.row];
-    cell.textLabel.text = name;
-    
-    return cell;
-}
-
-- (IBAction)refreshFriends:(id)sender {
-    [self.dbManager deleteAllPeople];
-    
-    [self.allFriends removeAllObjects];
-    [self.autoCompleteFriendsToShow removeAllObjects];
-    [self.friendsTableView reloadData];
-    
-    [self getFacebookFriends];
-}
-
-- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return self.autoCompleteFriendsToShow.count;
-}
-
-- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (IBAction)backToMainViewController:(id)sender {
-    //self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
 
 /****************************************
- *       FACEBOOK FRIENDS
+ *       GET FRIENDS METHODS
  ****************************************/
 
 # pragma mark - Friends
@@ -198,6 +128,94 @@
     }
     self.autoCompleteFriendsToShow = [NSMutableArray arrayWithArray:[self.autoCompleteFriendsToShow sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]];
     [self.friendsTableView reloadData];
+}
+
+
+/****************************************
+ *       TABLEVIEW DELEGATE
+ ****************************************/
+
+# pragma mark - TableView
+
+- (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    
+    if(!cell) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    }
+    
+    NSString *name = self.autoCompleteFriendsToShow[indexPath.row];
+    cell.textLabel.text = name;
+    
+    return cell;
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return self.autoCompleteFriendsToShow.count;
+}
+
+- (NSInteger) numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 1;
+}
+
+
+/****************************************
+ *       SEARCHBAR DELEGATE
+ ****************************************/
+
+# pragma mark - SEARCHBAR
+
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    [self.autoCompleteFriendsToShow removeAllObjects];
+    
+    for(NSString *name in self.allFriends.allKeys) {
+        if([[name lowercaseString] containsString:[searchText lowercaseString]]) {
+            [self.autoCompleteFriendsToShow addObject:name];
+        }
+    }
+    
+    if(searchText.length == 0) {
+        [self.autoCompleteFriendsToShow removeAllObjects];
+        [self.autoCompleteFriendsToShow addObjectsFromArray:self.allFriends.allKeys];
+    }
+    
+    self.autoCompleteFriendsToShow = [NSMutableArray arrayWithArray:[self.autoCompleteFriendsToShow sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]];
+    
+    [self.friendsTableView reloadData];
+    
+}
+
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    [self.autoCompleteFriendsToShow removeAllObjects];
+    [self.autoCompleteFriendsToShow addObjectsFromArray:self.allFriends.allKeys];
+    self.autoCompleteFriendsToShow = [NSMutableArray arrayWithArray:[self.autoCompleteFriendsToShow sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]];
+    [self.friendsTableView reloadData];
+}
+
+
+/****************************************
+ *       BUTTON LISTENERS
+ ****************************************/
+
+# pragma mark - Buttons
+
+- (IBAction)refreshFriends:(id)sender {
+    [self.dbManager deleteAllPeople];
+    
+    [self.allFriends removeAllObjects];
+    [self.autoCompleteFriendsToShow removeAllObjects];
+    [self.friendsTableView reloadData];
+    
+    [self getFacebookFriends];
+}
+
+- (IBAction)backToMainViewController:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
