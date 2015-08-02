@@ -24,6 +24,10 @@
 		949FAE871B547CEE00835D9B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 949FAE861B547CEE00835D9B /* libsqlite3.dylib */; };
 		94B0BF671B6D86EC008F84D1 /* MainAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF661B6D86EC008F84D1 /* MainAnimationTransition.m */; };
 		94B0BF6A1B6ED910008F84D1 /* blank_profile_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF691B6ED910008F84D1 /* blank_profile_picture.png */; };
+		94B0BF741B6EE064008F84D1 /* PQFBarsInCircle.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF6C1B6EE064008F84D1 /* PQFBarsInCircle.m */; };
+		94B0BF751B6EE064008F84D1 /* PQFBouncingBalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF6E1B6EE064008F84D1 /* PQFBouncingBalls.m */; };
+		94B0BF761B6EE064008F84D1 /* PQFCirclesInTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF701B6EE064008F84D1 /* PQFCirclesInTriangle.m */; };
+		94B0BF771B6EE064008F84D1 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF731B6EE064008F84D1 /* UIColor+FlatColors.m */; };
 		94B2B01B1B14E82900CFE01F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01A1B14E82900CFE01F /* main.m */; };
 		94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01D1B14E82900CFE01F /* AppDelegate.m */; };
 		94B2B0211B14E82900CFE01F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0201B14E82900CFE01F /* ViewController.m */; };
@@ -79,6 +83,15 @@
 		94B0BF651B6D86EC008F84D1 /* MainAnimationTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAnimationTransition.h; sourceTree = "<group>"; };
 		94B0BF661B6D86EC008F84D1 /* MainAnimationTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAnimationTransition.m; sourceTree = "<group>"; };
 		94B0BF691B6ED910008F84D1 /* blank_profile_picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank_profile_picture.png; sourceTree = "<group>"; };
+		94B0BF6B1B6EE064008F84D1 /* PQFBarsInCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFBarsInCircle.h; sourceTree = "<group>"; };
+		94B0BF6C1B6EE064008F84D1 /* PQFBarsInCircle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFBarsInCircle.m; sourceTree = "<group>"; };
+		94B0BF6D1B6EE064008F84D1 /* PQFBouncingBalls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFBouncingBalls.h; sourceTree = "<group>"; };
+		94B0BF6E1B6EE064008F84D1 /* PQFBouncingBalls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFBouncingBalls.m; sourceTree = "<group>"; };
+		94B0BF6F1B6EE064008F84D1 /* PQFCirclesInTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCirclesInTriangle.h; sourceTree = "<group>"; };
+		94B0BF701B6EE064008F84D1 /* PQFCirclesInTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PQFCirclesInTriangle.m; sourceTree = "<group>"; };
+		94B0BF711B6EE064008F84D1 /* PQFCustomLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCustomLoaders.h; sourceTree = "<group>"; };
+		94B0BF721B6EE064008F84D1 /* UIColor+FlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatColors.h"; sourceTree = "<group>"; };
+		94B0BF731B6EE064008F84D1 /* UIColor+FlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatColors.m"; sourceTree = "<group>"; };
 		94B2B0151B14E82900CFE01F /* Facebook Friend Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facebook Friend Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B2B0191B14E82900CFE01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B2B01A1B14E82900CFE01F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -257,6 +270,30 @@
 			name = Transitions;
 			sourceTree = "<group>";
 		};
+		94B0BF781B6EE06B008F84D1 /* Loading Animation */ = {
+			isa = PBXGroup;
+			children = (
+				94B0BF6B1B6EE064008F84D1 /* PQFBarsInCircle.h */,
+				94B0BF6C1B6EE064008F84D1 /* PQFBarsInCircle.m */,
+				94B0BF6D1B6EE064008F84D1 /* PQFBouncingBalls.h */,
+				94B0BF6E1B6EE064008F84D1 /* PQFBouncingBalls.m */,
+				94B0BF6F1B6EE064008F84D1 /* PQFCirclesInTriangle.h */,
+				94B0BF701B6EE064008F84D1 /* PQFCirclesInTriangle.m */,
+				94B0BF711B6EE064008F84D1 /* PQFCustomLoaders.h */,
+				94B0BF791B6EE073008F84D1 /* UIColors + Flat Colors */,
+			);
+			name = "Loading Animation";
+			sourceTree = "<group>";
+		};
+		94B0BF791B6EE073008F84D1 /* UIColors + Flat Colors */ = {
+			isa = PBXGroup;
+			children = (
+				94B0BF721B6EE064008F84D1 /* UIColor+FlatColors.h */,
+				94B0BF731B6EE064008F84D1 /* UIColor+FlatColors.m */,
+			);
+			name = "UIColors + Flat Colors";
+			sourceTree = "<group>";
+		};
 		94B2B00C1B14E82900CFE01F = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +333,7 @@
 				94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */,
 				94B0BF691B6ED910008F84D1 /* blank_profile_picture.png */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
+				94B0BF781B6EE06B008F84D1 /* Loading Animation */,
 				941732671B15058F006B5F78 /* KeyChain */,
 				941732661B150587006B5F78 /* Login */,
 				94509A161B65FD9700DC2212 /* Default Files */,
@@ -441,10 +479,14 @@
 				94B2B0471B14EB0B00CFE01F /* LoginViewController.m in Sources */,
 				94509A061B64A95700DC2212 /* GetFacebookFriendsViewController.m in Sources */,
 				94B2B0211B14E82900CFE01F /* ViewController.m in Sources */,
+				94B0BF741B6EE064008F84D1 /* PQFBarsInCircle.m in Sources */,
+				94B0BF751B6EE064008F84D1 /* PQFBouncingBalls.m in Sources */,
 				94509A0B1B65FC2800DC2212 /* GetFacebookPostsViewController.m in Sources */,
 				94B0BF671B6D86EC008F84D1 /* MainAnimationTransition.m in Sources */,
 				94509A011B63559200DC2212 /* MainFriendAnalyzerViewController.m in Sources */,
 				949FAE771B547A0D00835D9B /* Person.m in Sources */,
+				94B0BF761B6EE064008F84D1 /* PQFCirclesInTriangle.m in Sources */,
+				94B0BF771B6EE064008F84D1 /* UIColor+FlatColors.m in Sources */,
 				9417325C1B150200006B5F78 /* ChooseAnalyzerViewController.m in Sources */,
 				94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */,
 				94B2B01B1B14E82900CFE01F /* main.m in Sources */,
