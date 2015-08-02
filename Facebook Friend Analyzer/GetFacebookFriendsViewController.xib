@@ -25,6 +25,11 @@
                                     <action selector="backToMainViewController:" destination="-1" id="mst-2d-3hs"/>
                                 </connections>
                             </barButtonItem>
+                            <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="B1L-J5-iwv">
+                                <connections>
+                                    <action selector="refreshFriends:" destination="-1" id="4cf-xD-bPc"/>
+                                </connections>
+                            </barButtonItem>
                         </navigationItem>
                     </items>
                 </navigationBar>
@@ -46,7 +51,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="222.5" y="260.5"/>
+            <point key="canvasLocation" x="296.5" y="251.5"/>
         </view>
     </objects>
 </document>

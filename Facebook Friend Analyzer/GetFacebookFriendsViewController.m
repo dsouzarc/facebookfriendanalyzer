@@ -16,6 +16,8 @@
 @property (strong, nonatomic) NSMutableDictionary *allFriends;
 @property (strong, nonatomic) NSMutableArray *autoCompleteFriendsToShow;
 
+@property (strong, nonatomic) DatabaseManager *dbManager;
+
 @end
 
 @implementation GetFacebookFriendsViewController
@@ -25,10 +27,19 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if(self) {
+        self.dbManager = [DatabaseManager databaseManager];
         self.allFriends = [[NSMutableDictionary alloc] init];
         self.autoCompleteFriendsToShow = [[NSMutableArray alloc] init];
+        
+        NSMutableArray *allFriends = [self.dbManager getAllPeople];
+        
+        for(Person *person in allFriends) {
+            [self.allFriends setObject:person forKey:person.name];
+        }
+        
+        [self.autoCompleteFriendsToShow addObjectsFromArray:self.allFriends.allKeys];
+        self.autoCompleteFriendsToShow = [NSMutableArray arrayWithArray:[self.autoCompleteFriendsToShow sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]];
     }
-    
     return self;
 }
 
@@ -64,7 +75,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self getFacebookFriends];
+    //[self getFacebookFriends];
 }
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -79,6 +90,16 @@
     cell.textLabel.text = name;
     
     return cell;
+}
+
+- (IBAction)refreshFriends:(id)sender {
+    [self.dbManager deleteAllPeople];
+    
+    [self.allFriends removeAllObjects];
+    [self.autoCompleteFriendsToShow removeAllObjects];
+    [self.friendsTableView reloadData];
+    
+    [self getFacebookFriends];
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -142,7 +163,7 @@
     }
     
     else {
-        //[self.dbManager addPeopleToDatabase:[self.people allObjects]];
+        [self.dbManager addPeopleToDatabase:[self.allFriends allValues]];
         NSLog(@"Done getting people");
     }
 }
@@ -163,6 +184,7 @@
                 NSLog(@"ALREADY CONTAINED: %@", name);
             }
             else {
+                NSLog(@"New ID: %@", person.id);
                 [self.allFriends setObject:person forKey:person.name];
                 
                 if(!self.findFriendsSearchBar.text || self.findFriendsSearchBar.text.length == 0) {

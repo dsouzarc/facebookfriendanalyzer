@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "DatabaseManager.h"
 #import "Person.h"
 
 @interface GetFacebookFriendsViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
