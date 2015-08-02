@@ -23,6 +23,7 @@
 		949FAE831B547C7700835D9B /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE821B547C7700835D9B /* DatabaseManager.m */; };
 		949FAE871B547CEE00835D9B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 949FAE861B547CEE00835D9B /* libsqlite3.dylib */; };
 		94B0BF671B6D86EC008F84D1 /* MainAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF661B6D86EC008F84D1 /* MainAnimationTransition.m */; };
+		94B0BF6A1B6ED910008F84D1 /* blank_profile_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF691B6ED910008F84D1 /* blank_profile_picture.png */; };
 		94B2B01B1B14E82900CFE01F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01A1B14E82900CFE01F /* main.m */; };
 		94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01D1B14E82900CFE01F /* AppDelegate.m */; };
 		94B2B0211B14E82900CFE01F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0201B14E82900CFE01F /* ViewController.m */; };
@@ -77,6 +78,7 @@
 		949FAE861B547CEE00835D9B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		94B0BF651B6D86EC008F84D1 /* MainAnimationTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAnimationTransition.h; sourceTree = "<group>"; };
 		94B0BF661B6D86EC008F84D1 /* MainAnimationTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAnimationTransition.m; sourceTree = "<group>"; };
+		94B0BF691B6ED910008F84D1 /* blank_profile_picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank_profile_picture.png; sourceTree = "<group>"; };
 		94B2B0151B14E82900CFE01F /* Facebook Friend Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facebook Friend Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B2B0191B14E82900CFE01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B2B01A1B14E82900CFE01F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				94B2B01C1B14E82900CFE01F /* AppDelegate.h */,
 				94B2B01D1B14E82900CFE01F /* AppDelegate.m */,
 				94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */,
+				94B0BF691B6ED910008F84D1 /* blank_profile_picture.png */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
 				941732671B15058F006B5F78 /* KeyChain */,
 				941732661B150587006B5F78 /* Login */,
@@ -416,6 +419,7 @@
 				94D17D361B1A514B006AF7A7 /* facebook_f_icon.png in Resources */,
 				94B2B0291B14E82900CFE01F /* LaunchScreen.xib in Resources */,
 				94B2B0261B14E82900CFE01F /* Images.xcassets in Resources */,
+				94B0BF6A1B6ED910008F84D1 /* blank_profile_picture.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

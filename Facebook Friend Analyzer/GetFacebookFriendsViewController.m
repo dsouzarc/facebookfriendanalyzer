@@ -16,6 +16,11 @@
 @property (strong, nonatomic) NSMutableDictionary *allFriends;
 @property (strong, nonatomic) NSMutableArray *autoCompleteFriendsToShow;
 
+@property (strong, nonatomic) NSOperationQueue *downloadProfilePhotosQueue;
+@property (strong, nonatomic) NSString *directoryToSavePhotoTo;
+@property (strong, nonatomic) UIImage *blankProfilePictureImage;
+@property (nonatomic) CGSize photoSize;
+
 @property (strong, nonatomic) DatabaseManager *dbManager;
 
 @end
@@ -28,11 +33,15 @@
     
     if(self) {
         self.dbManager = [DatabaseManager databaseManager];
+        
+        self.downloadProfilePhotosQueue = [[NSOperationQueue alloc] init];
+        [self.downloadProfilePhotosQueue setMaxConcurrentOperationCount:5];
+        self.directoryToSavePhotoTo = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+        self.photoSize = CGSizeMake(40, 40);
+        
         self.allFriends = [[NSMutableDictionary alloc] init];
         self.autoCompleteFriendsToShow = [[NSMutableArray alloc] init];
-        
         NSMutableArray *allFriends = [self.dbManager getAllPeople];
-        
         for(Person *person in allFriends) {
             [self.allFriends setObject:person forKey:person.name];
         }
@@ -40,11 +49,36 @@
         [self.autoCompleteFriendsToShow addObjectsFromArray:self.allFriends.allKeys];
         self.autoCompleteFriendsToShow = [NSMutableArray arrayWithArray:[self.autoCompleteFriendsToShow sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)]];
     }
+    
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+- (void) savePersonProfilePhoto:(Person*)person
+{
+    NSBlockOperation *downloadPhoto = [NSBlockOperation blockOperationWithBlock:^(void) {
+        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:person.profilePicture]];
+        UIImage *profilePicture = [UIImage imageWithData:imageData];
+        
+        if(!profilePicture) {
+            NSLog(@"ERROR GETTING PERSON PROFILE PICTURE: %@\t%@", person.name, person.profilePicture);
+        }
+        else {
+            NSString *imageName = [NSString stringWithFormat:@"%@_ProfilePicture.png", person.name];
+            NSString *imagePath = [self.directoryToSavePhotoTo stringByAppendingPathComponent:imageName];
+            
+            imageData = UIImagePNGRepresentation(profilePicture);
+            
+            if(![imageData writeToFile:imagePath atomically:YES]) {
+                NSLog(@"PROBLEM SAVING PERSON'S IMAGE TO FILE: %@\t%@", person.name, person.profilePicture);
+            }
+        }
+    }];
+    
+    [self.downloadProfilePhotosQueue addOperation:downloadPhoto];
 }
 
 
@@ -114,13 +148,13 @@
                 NSLog(@"ALREADY CONTAINED: %@", name);
             }
             else {
-                NSLog(@"New ID: %@", person.id);
                 [self.allFriends setObject:person forKey:person.name];
-                
                 if(!self.findFriendsSearchBar.text || self.findFriendsSearchBar.text.length == 0) {
                     [self.autoCompleteFriendsToShow addObject:name];
                 }
             }
+            
+            [self savePersonProfilePhoto:person];
         }
         @catch (NSException *exception) {
             NSLog(@"EXCEPTION ADDING: %@", exception.reason);
@@ -146,7 +180,26 @@
     }
     
     NSString *name = self.autoCompleteFriendsToShow[indexPath.row];
+    
+    NSString *imageName = [NSString stringWithFormat:@"%@_ProfilePicture.png", name];
+    NSString *imagePath = [self.directoryToSavePhotoTo stringByAppendingPathComponent:imageName];
+    UIImage *profilePicture = [UIImage imageWithContentsOfFile:imagePath];
+    
+    if(profilePicture) {
+        profilePicture = [self resizeImage:profilePicture convertToSize:self.photoSize];
+    }
+    else {
+        if(self.blankProfilePictureImage) {
+            profilePicture = self.blankProfilePictureImage;
+        }
+        else {
+            profilePicture = [UIImage imageWithContentsOfFile:@"blank_profile_picture.png"];
+            profilePicture = [self resizeImage:profilePicture convertToSize:self.photoSize];
+        }
+    }
+    
     cell.textLabel.text = name;
+    cell.imageView.image = profilePicture;
     
     return cell;
 }
@@ -216,6 +269,14 @@
 
 - (IBAction)backToMainViewController:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (UIImage *)resizeImage:(UIImage *)image convertToSize:(CGSize)size {
+    UIGraphicsBeginImageContext(size);
+    [image drawInRect:CGRectMake(0, 0, size.width, size.height)];
+    UIImage *destImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return destImage;
 }
 
 @end
