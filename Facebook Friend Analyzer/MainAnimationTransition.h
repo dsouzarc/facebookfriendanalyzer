@@ -11,6 +11,6 @@
 
 @interface MainAnimationTransition : NSObject <UIViewControllerAnimatedTransitioning, UIViewControllerTransitioningDelegate>
 
-@property (nonatomic) BOOL isPresenting;
+@property (nonatomic) BOOL presentViewController;
 
 @end

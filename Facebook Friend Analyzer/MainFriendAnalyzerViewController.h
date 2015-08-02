@@ -10,6 +10,6 @@
 #import "MainAnimationTransition.h"
 #import "GetFacebookFriendsViewController.h"
 
-@interface MainFriendAnalyzerViewController : ViewController <UIViewControllerTransitioningDelegate>
+@interface MainFriendAnalyzerViewController : ViewController
 
 @end
