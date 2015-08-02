@@ -78,7 +78,7 @@
 
 - (void) deleteAllPeople
 {
-    NSString *deleteAllSQL = [@"DELETE FROM Person"];
+    NSString *deleteAllSQL = @"DELETE FROM Person";
     
     if(![self executeStatement:deleteAllSQL]) {
         NSLog(@"PROBLEM DELETING ALL PEOPLE");
