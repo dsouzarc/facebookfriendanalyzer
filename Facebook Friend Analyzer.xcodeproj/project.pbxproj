@@ -22,6 +22,7 @@
 		949FAE801B547BE600835D9B /* Like.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE7F1B547BE600835D9B /* Like.m */; };
 		949FAE831B547C7700835D9B /* DatabaseManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 949FAE821B547C7700835D9B /* DatabaseManager.m */; };
 		949FAE871B547CEE00835D9B /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 949FAE861B547CEE00835D9B /* libsqlite3.dylib */; };
+		94B0BF671B6D86EC008F84D1 /* MainAnimationTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF661B6D86EC008F84D1 /* MainAnimationTransition.m */; };
 		94B2B01B1B14E82900CFE01F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01A1B14E82900CFE01F /* main.m */; };
 		94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01D1B14E82900CFE01F /* AppDelegate.m */; };
 		94B2B0211B14E82900CFE01F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0201B14E82900CFE01F /* ViewController.m */; };
@@ -74,6 +75,8 @@
 		949FAE821B547C7700835D9B /* DatabaseManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseManager.m; sourceTree = "<group>"; };
 		949FAE841B547C8300835D9B /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		949FAE861B547CEE00835D9B /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		94B0BF651B6D86EC008F84D1 /* MainAnimationTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainAnimationTransition.h; sourceTree = "<group>"; };
+		94B0BF661B6D86EC008F84D1 /* MainAnimationTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainAnimationTransition.m; sourceTree = "<group>"; };
 		94B2B0151B14E82900CFE01F /* Facebook Friend Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facebook Friend Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B2B0191B14E82900CFE01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B2B01A1B14E82900CFE01F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -266,11 +269,13 @@
 		94B2B0171B14E82900CFE01F /* Facebook Friend Analyzer */ = {
 			isa = PBXGroup;
 			children = (
+				94B0BF651B6D86EC008F84D1 /* MainAnimationTransition.h */,
+				94B0BF661B6D86EC008F84D1 /* MainAnimationTransition.m */,
 				945099FE1B63559200DC2212 /* MainFriendAnalyzerViewController.h */,
 				945099FF1B63559200DC2212 /* MainFriendAnalyzerViewController.m */,
 				94509A001B63559200DC2212 /* MainFriendAnalyzerViewController.xib */,
-				94509A0D1B65FCF400DC2212 /* Facebook Posts */,
 				94509A0E1B65FD0800DC2212 /* Facebook Friends */,
+				94509A0D1B65FCF400DC2212 /* Facebook Posts */,
 				94509A0F1B65FD1200DC2212 /* Database Manager */,
 				941732591B150200006B5F78 /* ChooseAnalyzerViewController.h */,
 				9417325A1B150200006B5F78 /* ChooseAnalyzerViewController.m */,
@@ -425,6 +430,7 @@
 				94509A061B64A95700DC2212 /* GetFacebookFriendsViewController.m in Sources */,
 				94B2B0211B14E82900CFE01F /* ViewController.m in Sources */,
 				94509A0B1B65FC2800DC2212 /* GetFacebookPostsViewController.m in Sources */,
+				94B0BF671B6D86EC008F84D1 /* MainAnimationTransition.m in Sources */,
 				94509A011B63559200DC2212 /* MainFriendAnalyzerViewController.m in Sources */,
 				949FAE771B547A0D00835D9B /* Person.m in Sources */,
 				9417325C1B150200006B5F78 /* ChooseAnalyzerViewController.m in Sources */,

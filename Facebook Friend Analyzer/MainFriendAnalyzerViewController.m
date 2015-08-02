@@ -10,17 +10,58 @@
 
 @interface MainFriendAnalyzerViewController ()
 
+@property (strong, nonatomic) GetFacebookFriendsViewController *facebookFriendsVC;
+
 @end
 
 @implementation MainFriendAnalyzerViewController
 
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    
+    if(self) {
+        self.facebookFriendsVC = [[GetFacebookFriendsViewController alloc] initWithNibName:@"GetFacebookFriendsViewController" bundle:[NSBundle mainBundle]];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (IBAction)getFacebookFriends:(id)sender {
+    MainAnimationTransition *mainVC = [[MainAnimationTransition alloc] init];
+    mainVC.isPresenting = YES;
+    self.facebookFriendsVC.modalPresentationStyle = UIModalPresentationCustom;
+    self.facebookFriendsVC.transitioningDelegate = mainVC;
+    [self presentViewController:self.facebookFriendsVC animated:YES completion:nil];
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController animationControllerForOperation:(UINavigationControllerOperation)operation fromViewController:(UIViewController *)fromVC toViewController:(UIViewController *)toVC
+{
+    NSLog(@"Call me");
+    if (operation == UINavigationControllerOperationPop) {
+        return [MainAnimationTransition new];
+    }
+    return nil;
+}
+
+
+- (id <UIViewControllerAnimatedTransitioning>) animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source
+{
+    NSLog(@"Here");
+    MainAnimationTransition *mainTransition = [MainAnimationTransition new];
+    mainTransition.isPresenting = YES;
+    return mainTransition;
+}
+
+- (id <UIViewControllerAnimatedTransitioning>) animationControllerForDismissedController:(UIViewController *)dismissed
+{
     
+    NSLog(@"Here");
+    MainAnimationTransition *mainTransition = [MainAnimationTransition new];
+    return mainTransition;
 }
 
 - (IBAction)getFacebookPosts:(id)sender {

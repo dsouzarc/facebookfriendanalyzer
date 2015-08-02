@@ -22,7 +22,14 @@
 }
 
 - (IBAction)backToMainViewController:(id)sender {
+    self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 0;
 }
 
 
