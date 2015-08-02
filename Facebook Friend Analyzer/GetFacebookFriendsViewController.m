@@ -24,6 +24,8 @@
 
 @property (strong, nonatomic) DatabaseManager *dbManager;
 
+@property (strong, nonatomic) PQFBouncingBalls *loadingAnimation;
+
 @end
 
 @implementation GetFacebookFriendsViewController
@@ -58,6 +60,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.loadingAnimation = [[PQFBouncingBalls alloc] initLoaderOnView:self.view];
+    self.loadingAnimation.loaderColor = [UIColor blueColor];
+    self.loadingAnimation.jumpAmount = 50;
+    self.loadingAnimation.separation = 40;
+    self.loadingAnimation.zoomAmount = 40;
+    
+    if(self.allFriends.count == 0) {
+        [self getFacebookFriends];
+    }
+    
     [self.downloadProfilePhotosQueue addObserver:self forKeyPath:@"ImageDownloaderQueue" options:0 context:NULL];
 }
 
@@ -70,6 +82,8 @@
 
 - (void) getFacebookFriends
 {
+    [self.loadingAnimation show];
+    
     //GET LIST OF FRIENDS
     NSString *urlRequest = @"/me/taggable_friends?fields=name,picture.width(300),limit=500";
     
@@ -107,6 +121,7 @@
     }
     
     else {
+        [self.loadingAnimation hide];
         [self.dbManager addPeopleToDatabase:[self.allFriends allValues]];
         NSLog(@"Done getting people");
     }

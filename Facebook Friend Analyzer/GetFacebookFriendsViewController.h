@@ -6,10 +6,13 @@
 //  Copyright (c) 2015 Ryan D'souza. All rights reserved.
 //
 
-#import "ViewController.h"
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import "ViewController.h"
+
 #import "DatabaseManager.h"
 #import "Person.h"
+
+#import "PQFBouncingBalls.h"
 
 @interface GetFacebookFriendsViewController : ViewController <UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 
