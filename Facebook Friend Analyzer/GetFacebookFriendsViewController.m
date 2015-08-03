@@ -22,6 +22,9 @@
 @property (nonatomic) CGSize photoSize;
 @property (nonatomic) NSInteger finishedPhotosDownloaded;
 
+@property (strong, nonatomic) UIImageView *inflatedPhoto;
+@property (strong, nonatomic) UIView *blackScreen;
+
 @property (strong, nonatomic) DatabaseManager *dbManager;
 
 @property (strong, nonatomic) PQFBouncingBalls *loadingAnimation;
@@ -214,6 +217,50 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60.0;
+}
+
+- (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    CGRect rectInTableView = [tableView rectForRowAtIndexPath:indexPath];
+    CGRect rectInSuperview = [tableView convertRect:rectInTableView toView:[tableView superview]];
+    NSLog(@"Point: %f\t%f", rectInSuperview.origin.x, rectInSuperview.origin.y);
+    
+    NSString *name = self.autoCompleteFriendsToShow[indexPath.row];
+    NSString *imageName = [NSString stringWithFormat:@"%@_ProfilePicture.png", name];
+    NSString *imagePath = [self.directoryToSavePhotoTo stringByAppendingPathComponent:imageName];
+    UIImage *profilePicture = [UIImage imageWithContentsOfFile:imagePath];
+    
+    if(!profilePicture) {
+        profilePicture = [UIImage imageNamed:@"blank_profile_picture.png"];
+    }
+    
+    profilePicture = [self resizeImage:profilePicture convertToSize:CGSizeMake(300, 300)];
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:profilePicture];
+    imageView.layer.cornerRadius = profilePicture.size.width / 2;
+    imageView.layer.masksToBounds = YES;
+    
+    [imageView setFrame:CGRectMake(0, 0, 40, 40)];
+    imageView.center = CGPointMake(20, rectInSuperview.origin.y + 30);
+    
+    UIView *tempView = [[UIView alloc] initWithFrame:self.view.frame];
+    tempView.backgroundColor = [UIColor blackColor];
+    tempView.alpha = 0;
+    
+    [UIView animateWithDuration:0.6
+                     animations:^(void) {
+                         imageView.frame = CGRectMake(self.view.center.x, self.view.center.y, profilePicture.size.width, profilePicture.size.height);
+                         imageView.center = self.view.center;
+                         
+                         tempView.alpha += 0.4;
+                         //[self.view addSubview:tempView];
+                     }
+                     completion:^(BOOL completed) {
+                         
+                         //[self.view addSubview:tempView];
+                         //[self.view addSubview:imageView];
+                     }
+     ];
 }
 
 
