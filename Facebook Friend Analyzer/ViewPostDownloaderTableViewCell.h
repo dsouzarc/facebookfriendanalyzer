@@ -10,4 +10,9 @@
 
 @interface ViewPostDownloaderTableViewCell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UITextView *postTextView;
+@property (strong, nonatomic) IBOutlet UILabel *likesLabel;
+@property (strong, nonatomic) IBOutlet UILabel *commentsLabel;
+@property (strong, nonatomic) IBOutlet UILabel *dateLabel;
+
 @end

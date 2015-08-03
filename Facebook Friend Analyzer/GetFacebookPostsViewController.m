@@ -18,7 +18,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self.facebookPostsTableView registerClass:[ViewPostDownloaderTableViewCell class] forCellReuseIdentifier:@"FacebookPostTVC"];
 }
 
 - (IBAction)backButton:(id)sender {

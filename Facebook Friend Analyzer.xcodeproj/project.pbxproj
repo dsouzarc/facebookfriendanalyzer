@@ -28,6 +28,11 @@
 		94B0BF751B6EE064008F84D1 /* PQFBouncingBalls.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF6E1B6EE064008F84D1 /* PQFBouncingBalls.m */; };
 		94B0BF761B6EE064008F84D1 /* PQFCirclesInTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF701B6EE064008F84D1 /* PQFCirclesInTriangle.m */; };
 		94B0BF771B6EE064008F84D1 /* UIColor+FlatColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF731B6EE064008F84D1 /* UIColor+FlatColors.m */; };
+		94B0BF7F1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF7D1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.m */; };
+		94B0BF801B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF7E1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.xib */; };
+		94B0BF831B6F2FDC008F84D1 /* facebook_comment_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF811B6F2FDC008F84D1 /* facebook_comment_icon.jpg */; };
+		94B0BF841B6F2FDC008F84D1 /* facebook_like_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF821B6F2FDC008F84D1 /* facebook_like_icon.png */; };
+		94B0BF861B6F304B008F84D1 /* date_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF851B6F304B008F84D1 /* date_icon.png */; };
 		94B2B01B1B14E82900CFE01F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01A1B14E82900CFE01F /* main.m */; };
 		94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01D1B14E82900CFE01F /* AppDelegate.m */; };
 		94B2B0211B14E82900CFE01F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0201B14E82900CFE01F /* ViewController.m */; };
@@ -92,6 +97,12 @@
 		94B0BF711B6EE064008F84D1 /* PQFCustomLoaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PQFCustomLoaders.h; sourceTree = "<group>"; };
 		94B0BF721B6EE064008F84D1 /* UIColor+FlatColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FlatColors.h"; sourceTree = "<group>"; };
 		94B0BF731B6EE064008F84D1 /* UIColor+FlatColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FlatColors.m"; sourceTree = "<group>"; };
+		94B0BF7C1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewPostDownloaderTableViewCell.h; sourceTree = "<group>"; };
+		94B0BF7D1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewPostDownloaderTableViewCell.m; sourceTree = "<group>"; };
+		94B0BF7E1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewPostDownloaderTableViewCell.xib; sourceTree = "<group>"; };
+		94B0BF811B6F2FDC008F84D1 /* facebook_comment_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = facebook_comment_icon.jpg; sourceTree = "<group>"; };
+		94B0BF821B6F2FDC008F84D1 /* facebook_like_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_like_icon.png; sourceTree = "<group>"; };
+		94B0BF851B6F304B008F84D1 /* date_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = date_icon.png; sourceTree = "<group>"; };
 		94B2B0151B14E82900CFE01F /* Facebook Friend Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facebook Friend Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B2B0191B14E82900CFE01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B2B01A1B14E82900CFE01F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -171,6 +182,9 @@
 				94509A081B65FC2800DC2212 /* GetFacebookPostsViewController.h */,
 				94509A091B65FC2800DC2212 /* GetFacebookPostsViewController.m */,
 				94509A0A1B65FC2800DC2212 /* GetFacebookPostsViewController.xib */,
+				94B0BF7C1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.h */,
+				94B0BF7D1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.m */,
+				94B0BF7E1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.xib */,
 			);
 			name = "Facebook Posts";
 			sourceTree = "<group>";
@@ -330,6 +344,9 @@
 				94509A101B65FD2100DC2212 /* Objects */,
 				94B2B01C1B14E82900CFE01F /* AppDelegate.h */,
 				94B2B01D1B14E82900CFE01F /* AppDelegate.m */,
+				94B0BF851B6F304B008F84D1 /* date_icon.png */,
+				94B0BF811B6F2FDC008F84D1 /* facebook_comment_icon.jpg */,
+				94B0BF821B6F2FDC008F84D1 /* facebook_like_icon.png */,
 				94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */,
 				94B0BF691B6ED910008F84D1 /* blank_profile_picture.png */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
@@ -448,14 +465,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B0BF831B6F2FDC008F84D1 /* facebook_comment_icon.jpg in Resources */,
 				9417325D1B150200006B5F78 /* ChooseAnalyzerViewController.xib in Resources */,
 				94509A071B64A95700DC2212 /* GetFacebookFriendsViewController.xib in Resources */,
 				94509A021B63559200DC2212 /* MainFriendAnalyzerViewController.xib in Resources */,
 				94509A0C1B65FC2800DC2212 /* GetFacebookPostsViewController.xib in Resources */,
 				94B2B0481B14EB0B00CFE01F /* LoginViewController.xib in Resources */,
+				94B0BF861B6F304B008F84D1 /* date_icon.png in Resources */,
 				94B2B0241B14E82900CFE01F /* Main.storyboard in Resources */,
+				94B0BF801B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.xib in Resources */,
 				94D17D361B1A514B006AF7A7 /* facebook_f_icon.png in Resources */,
 				94B2B0291B14E82900CFE01F /* LaunchScreen.xib in Resources */,
+				94B0BF841B6F2FDC008F84D1 /* facebook_like_icon.png in Resources */,
 				94B2B0261B14E82900CFE01F /* Images.xcassets in Resources */,
 				94B0BF6A1B6ED910008F84D1 /* blank_profile_picture.png in Resources */,
 			);
@@ -492,6 +513,7 @@
 				94B2B01B1B14E82900CFE01F /* main.m in Sources */,
 				941732651B1504ED006B5F78 /* UICKeyChainStore.m in Sources */,
 				949FAE831B547C7700835D9B /* DatabaseManager.m in Sources */,
+				94B0BF7F1B6F2E54008F84D1 /* ViewPostDownloaderTableViewCell.m in Sources */,
 				949FAE7D1B547AC700835D9B /* Comment.m in Sources */,
 				949FAE7A1B547A9500835D9B /* Post.m in Sources */,
 			);

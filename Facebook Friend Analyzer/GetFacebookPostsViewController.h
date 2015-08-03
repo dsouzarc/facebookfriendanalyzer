@@ -6,7 +6,15 @@
 //  Copyright (c) 2015 Ryan D'souza. All rights reserved.
 //
 
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "ViewController.h"
+
+#import "ViewPostDownloaderTableViewCell.h"
+#import "DatabaseManager.h"
+#import "Post.h"
+#import "Like.h"
+
+#import "PQFBouncingBalls.h"
 
 @interface GetFacebookPostsViewController : ViewController <UITableViewDelegate, UITableViewDataSource>
 
