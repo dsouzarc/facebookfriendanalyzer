@@ -33,8 +33,8 @@
 		94B0BF831B6F2FDC008F84D1 /* facebook_comment_icon.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF811B6F2FDC008F84D1 /* facebook_comment_icon.jpg */; };
 		94B0BF841B6F2FDC008F84D1 /* facebook_like_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF821B6F2FDC008F84D1 /* facebook_like_icon.png */; };
 		94B0BF861B6F304B008F84D1 /* date_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF851B6F304B008F84D1 /* date_icon.png */; };
-		94B0BF8A1B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF881B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.m */; };
-		94B0BF8B1B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF891B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.xib */; };
+		94B0BF8F1B707CC7008F84D1 /* FacebookFriendsInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B0BF8D1B707CC7008F84D1 /* FacebookFriendsInfoViewController.m */; };
+		94B0BF901B707CC7008F84D1 /* FacebookFriendsInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 94B0BF8E1B707CC7008F84D1 /* FacebookFriendsInfoViewController.xib */; };
 		94B2B01B1B14E82900CFE01F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01A1B14E82900CFE01F /* main.m */; };
 		94B2B01E1B14E82900CFE01F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B01D1B14E82900CFE01F /* AppDelegate.m */; };
 		94B2B0211B14E82900CFE01F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 94B2B0201B14E82900CFE01F /* ViewController.m */; };
@@ -105,9 +105,9 @@
 		94B0BF811B6F2FDC008F84D1 /* facebook_comment_icon.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = facebook_comment_icon.jpg; sourceTree = "<group>"; };
 		94B0BF821B6F2FDC008F84D1 /* facebook_like_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook_like_icon.png; sourceTree = "<group>"; };
 		94B0BF851B6F304B008F84D1 /* date_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = date_icon.png; sourceTree = "<group>"; };
-		94B0BF871B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFacebookFriendsInfoTableViewController.h; sourceTree = "<group>"; };
-		94B0BF881B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFacebookFriendsInfoTableViewController.m; sourceTree = "<group>"; };
-		94B0BF891B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewFacebookFriendsInfoTableViewController.xib; sourceTree = "<group>"; };
+		94B0BF8C1B707CC7008F84D1 /* FacebookFriendsInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookFriendsInfoViewController.h; sourceTree = "<group>"; };
+		94B0BF8D1B707CC7008F84D1 /* FacebookFriendsInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FacebookFriendsInfoViewController.m; sourceTree = "<group>"; };
+		94B0BF8E1B707CC7008F84D1 /* FacebookFriendsInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FacebookFriendsInfoViewController.xib; sourceTree = "<group>"; };
 		94B2B0151B14E82900CFE01F /* Facebook Friend Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Facebook Friend Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		94B2B0191B14E82900CFE01F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94B2B01A1B14E82900CFE01F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -200,9 +200,9 @@
 				94509A031B64A95700DC2212 /* GetFacebookFriendsViewController.h */,
 				94509A041B64A95700DC2212 /* GetFacebookFriendsViewController.m */,
 				94509A051B64A95700DC2212 /* GetFacebookFriendsViewController.xib */,
-				94B0BF871B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.h */,
-				94B0BF881B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.m */,
-				94B0BF891B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.xib */,
+				94B0BF8C1B707CC7008F84D1 /* FacebookFriendsInfoViewController.h */,
+				94B0BF8D1B707CC7008F84D1 /* FacebookFriendsInfoViewController.m */,
+				94B0BF8E1B707CC7008F84D1 /* FacebookFriendsInfoViewController.xib */,
 			);
 			name = "Facebook Friends";
 			sourceTree = "<group>";
@@ -473,12 +473,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B0BF901B707CC7008F84D1 /* FacebookFriendsInfoViewController.xib in Resources */,
 				94B0BF831B6F2FDC008F84D1 /* facebook_comment_icon.jpg in Resources */,
 				9417325D1B150200006B5F78 /* ChooseAnalyzerViewController.xib in Resources */,
 				94509A071B64A95700DC2212 /* GetFacebookFriendsViewController.xib in Resources */,
 				94509A021B63559200DC2212 /* MainFriendAnalyzerViewController.xib in Resources */,
 				94509A0C1B65FC2800DC2212 /* GetFacebookPostsViewController.xib in Resources */,
-				94B0BF8B1B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.xib in Resources */,
 				94B2B0481B14EB0B00CFE01F /* LoginViewController.xib in Resources */,
 				94B0BF861B6F304B008F84D1 /* date_icon.png in Resources */,
 				94B2B0241B14E82900CFE01F /* Main.storyboard in Resources */,
@@ -505,7 +505,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				94B0BF8A1B707C7B008F84D1 /* ViewFacebookFriendsInfoTableViewController.m in Sources */,
 				949FAE801B547BE600835D9B /* Like.m in Sources */,
 				94B2B0471B14EB0B00CFE01F /* LoginViewController.m in Sources */,
 				94509A061B64A95700DC2212 /* GetFacebookFriendsViewController.m in Sources */,
@@ -515,6 +514,7 @@
 				94509A0B1B65FC2800DC2212 /* GetFacebookPostsViewController.m in Sources */,
 				94B0BF671B6D86EC008F84D1 /* MainAnimationTransition.m in Sources */,
 				94509A011B63559200DC2212 /* MainFriendAnalyzerViewController.m in Sources */,
+				94B0BF8F1B707CC7008F84D1 /* FacebookFriendsInfoViewController.m in Sources */,
 				949FAE771B547A0D00835D9B /* Person.m in Sources */,
 				94B0BF761B6EE064008F84D1 /* PQFCirclesInTriangle.m in Sources */,
 				94B0BF771B6EE064008F84D1 /* UIColor+FlatColors.m in Sources */,
