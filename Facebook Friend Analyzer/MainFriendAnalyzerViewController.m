@@ -11,6 +11,7 @@
 @interface MainFriendAnalyzerViewController ()
 
 @property (strong, nonatomic) GetFacebookFriendsViewController *facebookFriendsVC;
+@property (strong, nonatomic) GetFacebookPostsViewController *facebookPostsVC;
 
 @property (strong, nonatomic) MainAnimationTransition *transitioner;
 
@@ -24,9 +25,14 @@
     
     if(self) {
         self.transitioner = [[MainAnimationTransition alloc] init];
+        
         self.facebookFriendsVC = [[GetFacebookFriendsViewController alloc] initWithNibName:@"GetFacebookFriendsViewController" bundle:[NSBundle mainBundle]];
         self.facebookFriendsVC.modalPresentationStyle = UIModalPresentationCustom;
         self.facebookFriendsVC.transitioningDelegate = self.transitioner;
+        
+        self.facebookPostsVC = [[GetFacebookPostsViewController alloc] initWithNibName:@"GetFacebookPostsViewController" bundle:[NSBundle mainBundle]];
+        self.facebookPostsVC.modalPresentationStyle = UIModalPresentationCustom;
+        self.facebookPostsVC.transitioningDelegate = self.transitioner;
     }
     return self;
 }
@@ -41,7 +47,8 @@
 }
 
 - (IBAction)getFacebookPosts:(id)sender {
-    
+    self.transitioner.presentViewController = YES;
+    [self presentViewController:self.facebookPostsVC animated:YES completion:nil];
 }
 
 - (IBAction)getFacebookPictures:(id)sender {

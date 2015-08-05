@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #import "MainAnimationTransition.h"
 #import "GetFacebookFriendsViewController.h"
+#import "GetFacebookPostsViewController.h"
 
 @interface MainFriendAnalyzerViewController : ViewController
 
