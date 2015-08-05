@@ -197,12 +197,8 @@
 		94509A0E1B65FD0800DC2212 /* Facebook Friends */ = {
 			isa = PBXGroup;
 			children = (
-				94509A031B64A95700DC2212 /* GetFacebookFriendsViewController.h */,
-				94509A041B64A95700DC2212 /* GetFacebookFriendsViewController.m */,
-				94509A051B64A95700DC2212 /* GetFacebookFriendsViewController.xib */,
-				94B0BF8C1B707CC7008F84D1 /* FacebookFriendsInfoViewController.h */,
-				94B0BF8D1B707CC7008F84D1 /* FacebookFriendsInfoViewController.m */,
-				94B0BF8E1B707CC7008F84D1 /* FacebookFriendsInfoViewController.xib */,
+				94B0BF921B71D7BA008F84D1 /* Get All Friends */,
+				94B0BF911B71D7B0008F84D1 /* View Friends Info */,
 			);
 			name = "Facebook Friends";
 			sourceTree = "<group>";
@@ -314,6 +310,26 @@
 				94B0BF731B6EE064008F84D1 /* UIColor+FlatColors.m */,
 			);
 			name = "UIColors + Flat Colors";
+			sourceTree = "<group>";
+		};
+		94B0BF911B71D7B0008F84D1 /* View Friends Info */ = {
+			isa = PBXGroup;
+			children = (
+				94B0BF8C1B707CC7008F84D1 /* FacebookFriendsInfoViewController.h */,
+				94B0BF8D1B707CC7008F84D1 /* FacebookFriendsInfoViewController.m */,
+				94B0BF8E1B707CC7008F84D1 /* FacebookFriendsInfoViewController.xib */,
+			);
+			name = "View Friends Info";
+			sourceTree = "<group>";
+		};
+		94B0BF921B71D7BA008F84D1 /* Get All Friends */ = {
+			isa = PBXGroup;
+			children = (
+				94509A031B64A95700DC2212 /* GetFacebookFriendsViewController.h */,
+				94509A041B64A95700DC2212 /* GetFacebookFriendsViewController.m */,
+				94509A051B64A95700DC2212 /* GetFacebookFriendsViewController.xib */,
+			);
+			name = "Get All Friends";
 			sourceTree = "<group>";
 		};
 		94B2B00C1B14E82900CFE01F = {
