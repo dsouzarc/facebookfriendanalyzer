@@ -223,10 +223,6 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGRect rectInTableView = [tableView rectForRowAtIndexPath:indexPath];
-    CGRect rectInSuperview = [tableView convertRect:rectInTableView toView:[tableView superview]];
-    NSLog(@"Point: %f\t%f", rectInSuperview.origin.x, rectInSuperview.origin.y);
-    
     NSString *name = self.autoCompleteFriendsToShow[indexPath.row];
     NSString *imageName = [NSString stringWithFormat:@"%@_ProfilePicture.png", name];
     NSString *imagePath = [self.directoryToSavePhotoTo stringByAppendingPathComponent:imageName];

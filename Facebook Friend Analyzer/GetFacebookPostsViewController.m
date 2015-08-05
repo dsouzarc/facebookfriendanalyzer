@@ -43,7 +43,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [self.facebookPostsTableView registerClass:[ViewPostDownloaderTableViewCell class] forCellReuseIdentifier:@"FacebookPostTVC"];
+    //[self.facebookPostsTableView registerClass:[ViewPostDownloaderTableViewCell class] forCellReuseIdentifier:@"FacebookPostTVC"];
+    [self.facebookPostsTableView registerNib:[UINib nibWithNibName:@"ViewPostDownloaderTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"FacebookPostTVC"];
 }
 
 - (IBAction)backButton:(id)sender {
@@ -52,7 +53,7 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ViewPostDownloaderTableViewCell *postDownloader = [tableView cellForRowAtIndexPath:indexPath];
+    ViewPostDownloaderTableViewCell *postDownloader = [self.facebookPostsTableView dequeueReusableCellWithIdentifier:@"FacebookPostTVC"];
     
     if(!postDownloader) {
         postDownloader = [[ViewPostDownloaderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FacebookPostTVC"];
