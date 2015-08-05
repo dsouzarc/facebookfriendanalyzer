@@ -13,4 +13,7 @@
 
 - (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil profilePicture:(UIImage*)profilePicture person:(Person*)person;
 
+
+- (void) showInView:(UIView*)view;
+
 @end

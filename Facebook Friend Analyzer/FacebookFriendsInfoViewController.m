@@ -35,8 +35,57 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.nameLabel.text = self.person.name;
+    
+    self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.image.size.width / 2;
+    self.likesImageView.layer.cornerRadius = self.likesImageView.image.size.width / 2;
+    self.commentsImageView.layer.cornerRadius = self.commentsImageView.image.size.width / 2;
+    
+    UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    [self.view addGestureRecognizer:swipeRecognizer];
 }
 
+- (void) didSwipe:(UISwipeGestureRecognizer*)swipe
+{
+    if(swipe.direction == UISwipeGestureRecognizerDirectionDown) {
+        [self removeAnimate];
+    }
+}
+
+- (void) showAnimate
+{
+    self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
+    self.view.alpha = 0;
+    
+    [UIView animateWithDuration:0.5 animations:^(void) {
+        self.view.alpha = 1;
+        self.view.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    }];
+}
+
+- (void) removeAnimate
+{
+    [UIView animateWithDuration:0.5
+                     animations:^(void) {
+                         self.view.transform = CGAffineTransformMakeScale(1.3, 1.3);
+                         self.view.alpha = 0;
+                     }
+                     completion:^(BOOL completed) {
+                         if(completed) {
+                             [self.view removeFromSuperview];
+                         }
+                     }
+     ];
+}
+
+- (void) showInView:(UIView*)view
+{
+    dispatch_async(dispatch_get_main_queue(), ^(void) {
+        [view addSubview:self.view];
+        
+        [self showAnimate];
+    });
+}
 
 @end

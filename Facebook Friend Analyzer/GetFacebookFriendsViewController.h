@@ -9,6 +9,8 @@
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
 #import "ViewController.h"
 
+#import "FacebookFriendsInfoViewController.h"
+
 #import "DatabaseManager.h"
 #import "Person.h"
 
