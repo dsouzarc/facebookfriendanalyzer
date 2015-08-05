@@ -16,6 +16,12 @@
 @property (strong, nonatomic) IBOutlet UIImageView *commentsImageView;
 
 @property (strong, nonatomic) Person *person;
+@property (strong, nonatomic) UIImage *profilePicture;
+
+@property (strong, nonatomic) UIGestureRecognizer *gestureRecognizer;
+
+@property (strong, nonatomic) IBOutlet UIView *popupView;
+
 
 @end
 
@@ -26,30 +32,47 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     
     if(self) {
-        self.profilePictureImageView.image = profilePicture;
         self.person = person;
+        self.profilePicture = profilePicture;
     }
     
     return self;
 }
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
+    
+    self.view.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    
+    self.popupView.layer.cornerRadius = 5;
+    self.popupView.layer.shadowOpacity = 0.8;
+    self.popupView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     
     self.nameLabel.text = self.person.name;
     
-    self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.image.size.width / 2;
-    self.likesImageView.layer.cornerRadius = self.likesImageView.image.size.width / 2;
-    self.commentsImageView.layer.cornerRadius = self.commentsImageView.image.size.width / 2;
+    self.profilePictureImageView.image = self.profilePicture;
+    self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2;
+    self.profilePictureImageView.layer.masksToBounds = YES;
     
-    UISwipeGestureRecognizer *swipeRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
-    [self.view addGestureRecognizer:swipeRecognizer];
+    self.likesImageView.layer.cornerRadius = self.likesImageView.frame.size.width / 4;
+    self.likesImageView.layer.masksToBounds = YES;
+    
+    self.commentsImageView.layer.cornerRadius = self.commentsImageView.frame.size.width / 4;
+    self.commentsImageView.layer.masksToBounds = YES;
+    
+     self.gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
+    [self.view addGestureRecognizer:self.gestureRecognizer];
+    
 }
 
 - (void) didSwipe:(UISwipeGestureRecognizer*)swipe
 {
     if(swipe.direction == UISwipeGestureRecognizerDirectionDown) {
         [self removeAnimate];
+    }
+    else {
+        NSLog(@"Other gesture detected");
     }
 }
 

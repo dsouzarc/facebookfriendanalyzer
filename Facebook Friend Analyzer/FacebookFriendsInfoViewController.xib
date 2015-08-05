@@ -7,10 +7,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FacebookFriendsInfoViewController">
             <connections>
                 <outlet property="commentsImageView" destination="LgJ-BK-dnc" id="skP-oP-ZxL"/>
-                <outlet property="likesImageView" destination="ybk-4P-oDw" id="mIz-Ff-ESM"/>
                 <outlet property="nameLabel" destination="2Zw-se-LdA" id="0Cp-K4-Obk"/>
+                <outlet property="popupView" destination="N25-Jb-Fz2" id="U77-KF-dzy"/>
                 <outlet property="profilePictureImageView" destination="cHp-DY-Q5B" id="wys-2R-1gy"/>
-                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="exR-6Q-LoP"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -18,25 +18,67 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="blank_profile_picture.png" translatesAutoresizingMaskIntoConstraints="NO" id="cHp-DY-Q5B">
-                    <rect key="frame" x="50" y="72" width="275" height="255"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Friend Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zw-se-LdA">
-                    <rect key="frame" x="8" y="372" width="359" height="51"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="facebook_like_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="ybk-4P-oDw">
-                    <rect key="frame" x="32" y="468" width="120" height="120"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="facebook_comment_icon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LgJ-BK-dnc">
-                    <rect key="frame" x="223" y="468" width="120" height="120"/>
-                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N25-Jb-Fz2">
+                    <rect key="frame" x="61" y="116.5" width="253" height="434"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="blank_profile_picture.png" translatesAutoresizingMaskIntoConstraints="NO" id="cHp-DY-Q5B">
+                            <rect key="frame" x="49" y="32" width="155" height="155"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="155" id="KaI-BC-JoA"/>
+                                <constraint firstAttribute="height" constant="155" id="NJC-Bl-Sjf"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Zw-se-LdA">
+                            <rect key="frame" x="8" y="227" width="237" height="51"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="237" id="AFU-Yt-LJk"/>
+                                <constraint firstAttribute="height" constant="51" id="FQG-dI-JXx"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook_like_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="uZl-Va-ph6">
+                            <rect key="frame" x="8" y="310" width="88" height="90"/>
+                            <color key="backgroundColor" red="0.085858585860000003" green="0.085858585860000003" blue="0.085858585860000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="90" id="ClX-eW-GCw"/>
+                                <constraint firstAttribute="width" constant="88" id="ZhB-t9-pRF"/>
+                            </constraints>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="facebook_comment_icon.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="LgJ-BK-dnc">
+                            <rect key="frame" x="157" y="310" width="88" height="90"/>
+                            <color key="backgroundColor" red="0.085858585860000003" green="0.085858585860000003" blue="0.085858585860000003" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="90" id="dfM-QH-l9z"/>
+                                <constraint firstAttribute="width" constant="88" id="pfn-iA-wVi"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="LgJ-BK-dnc" secondAttribute="trailing" constant="8" id="5U3-hl-WwN"/>
+                        <constraint firstItem="2Zw-se-LdA" firstAttribute="top" secondItem="cHp-DY-Q5B" secondAttribute="bottom" constant="40" id="9EL-Th-DYq"/>
+                        <constraint firstAttribute="width" constant="253" id="IUE-BM-1x3"/>
+                        <constraint firstItem="cHp-DY-Q5B" firstAttribute="leading" secondItem="N25-Jb-Fz2" secondAttribute="leading" constant="49" id="KQa-Ca-DPd"/>
+                        <constraint firstAttribute="height" constant="434" id="M6R-bc-yUD"/>
+                        <constraint firstItem="cHp-DY-Q5B" firstAttribute="top" secondItem="N25-Jb-Fz2" secondAttribute="top" constant="32" id="isp-f3-idW"/>
+                        <constraint firstItem="uZl-Va-ph6" firstAttribute="top" secondItem="2Zw-se-LdA" secondAttribute="bottom" constant="32" id="juR-k1-eMH"/>
+                        <constraint firstAttribute="trailing" secondItem="cHp-DY-Q5B" secondAttribute="trailing" constant="49" id="kL1-qc-slH"/>
+                        <constraint firstItem="LgJ-BK-dnc" firstAttribute="top" secondItem="2Zw-se-LdA" secondAttribute="bottom" constant="32" id="lOB-Qo-ccE"/>
+                        <constraint firstItem="2Zw-se-LdA" firstAttribute="leading" secondItem="N25-Jb-Fz2" secondAttribute="leading" constant="8" id="nae-oe-erx"/>
+                        <constraint firstAttribute="trailing" secondItem="2Zw-se-LdA" secondAttribute="trailing" constant="8" id="rjD-l1-iB0"/>
+                        <constraint firstItem="uZl-Va-ph6" firstAttribute="leading" secondItem="N25-Jb-Fz2" secondAttribute="leading" constant="8" id="whW-bQ-1aI"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="N25-Jb-Fz2" secondAttribute="centerY" id="aMl-jQ-az8"/>
+                <constraint firstAttribute="centerX" secondItem="N25-Jb-Fz2" secondAttribute="centerX" id="eaq-sF-1vp"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="422.5" y="350.5"/>
+            <point key="canvasLocation" x="595.5" y="310.5"/>
         </view>
     </objects>
     <resources>
