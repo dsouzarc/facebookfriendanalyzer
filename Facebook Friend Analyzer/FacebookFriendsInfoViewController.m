@@ -19,9 +19,9 @@
 @property (strong, nonatomic) UIImage *profilePicture;
 
 @property (strong, nonatomic) UIGestureRecognizer *gestureRecognizer;
+@property (strong, nonatomic) UITapGestureRecognizer *tapGesterRecognizer;
 
 @property (strong, nonatomic) IBOutlet UIView *popupView;
-
 
 @end
 
@@ -64,6 +64,13 @@
      self.gestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(didSwipe:)];
     [self.view addGestureRecognizer:self.gestureRecognizer];
     
+    self.tapGesterRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapReceived:)];
+    [self.view addGestureRecognizer:self.tapGesterRecognizer];
+}
+
+- (void) tapReceived:(UITapGestureRecognizer*)tapGestureRecognizer
+{
+    [self removeAnimate];
 }
 
 - (void) didSwipe:(UISwipeGestureRecognizer*)swipe
