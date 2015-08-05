@@ -50,6 +50,8 @@
     self.popupView.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
     
     self.nameLabel.text = self.person.name;
+    self.nameLabel.numberOfLines = 1;
+    self.nameLabel.adjustsFontSizeToFitWidth = YES;
     
     self.profilePictureImageView.image = self.profilePicture;
     self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.size.width / 2;
