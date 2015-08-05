@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Person.h"
 
 @interface FacebookFriendsInfoViewController : UIViewController
+
+- (instancetype) initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil profilePicture:(UIImage*)profilePicture person:(Person*)person;
 
 @end
