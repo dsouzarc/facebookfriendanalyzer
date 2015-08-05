@@ -32,5 +32,6 @@
 
 - (void) addPostToTable:(Post*)post;
 - (void) addPostsToTable:(NSArray*)posts;
+- (NSMutableArray*) getAllPosts;
 
 @end

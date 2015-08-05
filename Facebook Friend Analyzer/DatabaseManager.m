@@ -319,6 +319,36 @@ static DatabaseManager *databaseManager = nil;
     sqlite3_close(database);
 }
 
+- (NSMutableArray*) getAllPosts
+{
+    NSMutableArray *allPosts = [[NSMutableArray alloc] init];
+    
+    NSString *querySQL = @"SELECT * FROM Post";
+    
+    sqlite3 *database;
+    sqlite3_open([self.databasePath UTF8String], &database);
+    sqlite3_stmt *statement;
+    
+    if(sqlite3_prepare(database, [querySQL UTF8String], -1, &statement, NULL)) {
+        while(sqlite3_step(statement) == SQLITE_ROW) {
+            NSString *postID = [NSString stringWithFormat:@"%lld", sqlite3_column_int64(statement, 0)];
+            NSString *message = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 1)];
+            NSString *postDate = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 2)];
+            
+            Post *post = [[Post alloc] initWithMessage:message postID:postID time:postDate];
+            [allPosts addObject:post];
+        }
+    }
+    else {
+        NSLog(@"PROBLEM OPENING DB IN GET ALL POSTS");
+    }
+    
+    sqlite3_finalize(statement);
+    sqlite3_close(database);
+    
+    return allPosts;
+}
+
 
 /****************************************
  *       Auxillary Methods
