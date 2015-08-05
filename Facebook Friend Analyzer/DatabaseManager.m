@@ -329,7 +329,7 @@ static DatabaseManager *databaseManager = nil;
     sqlite3_open([self.databasePath UTF8String], &database);
     sqlite3_stmt *statement;
     
-    if(sqlite3_prepare(database, [querySQL UTF8String], -1, &statement, NULL) != SQLITE_OK) {
+    if(sqlite3_prepare(database, [querySQL UTF8String], -1, &statement, NULL) == SQLITE_OK) {
         while(sqlite3_step(statement) == SQLITE_ROW) {
             NSString *postID = [NSString stringWithFormat:@"%lld", sqlite3_column_int64(statement, 0)];
             NSString *message = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 1)];
@@ -340,7 +340,7 @@ static DatabaseManager *databaseManager = nil;
         }
     }
     else {
-        NSLog(@"PROBLEM OPENING DB IN GET ALL POSTS: %s", sqlite3_errmsg(database));
+        NSLog(@"PROBLEM COMPILING STATEMENT IN GET ALL POSTS: %s", sqlite3_errmsg(database));
     }
     
     sqlite3_finalize(statement);
