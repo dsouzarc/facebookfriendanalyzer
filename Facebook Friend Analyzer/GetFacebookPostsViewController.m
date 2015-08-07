@@ -96,7 +96,7 @@
 - (void) getFacebookPosts
 {
     //GET LIST OF FRIENDS
-    NSString *urlRequest = @"me/feed?include_hidden=true&limit=15";
+    NSString *urlRequest = @"me/feed?fields=full_picture,message,id,story,created_time&include_hidden=true&limit=15";
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
@@ -130,9 +130,9 @@
                 [self.autocompletePostsToShow addObject:post];
                 
                 [self getPostLikesAndComments:post];
-                //NSLog(@"\n\n%@\n\n", dict);
+                NSLog(@"\n\n%@\n\n", dict);
                 
-                //NSLog(@"GOOD STORY: %@", dict[@"story"]);
+                NSLog(@"PICTURE: %@", dict[@"picture"]);
                 
                 for(NSString *key in dict.allKeys) {
                     //NSLog(@"Key: %@\tValue: %@", key, dict[key]);
@@ -140,10 +140,6 @@
             }
             
             [self.facebookPostsTableView reloadData];
-            
-            //NSDictionary *firstPost = postResults[1];
-            //NSString *postID = firstPost[@"id"];
-            //NSLog(@"Post ID: %@\t%@", postID, firstPost[@"message"]);
             
             //NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
             //[self.facebookPostsTableView reloadData];
