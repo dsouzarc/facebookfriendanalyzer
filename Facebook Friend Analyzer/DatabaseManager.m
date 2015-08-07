@@ -282,14 +282,14 @@ static DatabaseManager *databaseManager = nil;
 
 - (void) createPostTable:(sqlite3*)database
 {
-    NSString *createPostSQL = @"create table if not exists Post(postID integer primary key, message text, time text)";
+    NSString *createPostSQL = @"create table if not exists Post(postID integer primary key, message text, time text, linkToPhoto text)";
     [self createTable:createPostSQL tableName:@"Post" database:database];
 }
 
 - (void) addPostToTable:(Post *)post database:(sqlite3*)database
 {
-    NSString *insertSQL = [NSString stringWithFormat:@"insert into Post(postID, message, time) values ('%lld', '%@', '%@')",
-                           [post.postID longLongValue], post.message, post.time];
+    NSString *insertSQL = [NSString stringWithFormat:@"insert into Post(postID, message, time, linkToPhoto) values ('%lld', '%@', '%@', '%@')",
+                           [post.postID longLongValue], post.message, post.time, post.linkToPhoto];
     if(![self executeStatement:insertSQL database:database]) {
         NSLog(@"PROBLEM INSERTING POST: %@\t%@", post.postID, post.message);
     }
@@ -334,8 +334,9 @@ static DatabaseManager *databaseManager = nil;
             NSString *postID = [NSString stringWithFormat:@"%lld", sqlite3_column_int64(statement, 0)];
             NSString *message = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 1)];
             NSString *postDate = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 2)];
+            NSString *linkToPhoto = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)];
             
-            Post *post = [[Post alloc] initWithMessage:message postID:postID time:postDate];
+            Post *post = [[Post alloc] initWithMessage:message postID:postID time:postDate linkToPhoto:linkToPhoto];
             [allPosts addObject:post];
         }
     }
