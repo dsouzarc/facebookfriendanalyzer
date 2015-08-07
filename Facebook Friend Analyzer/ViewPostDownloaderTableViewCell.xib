@@ -15,10 +15,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Post text Post text Post text Post text Post text Post text Post text Post text Post text Post text " translatesAutoresizingMaskIntoConstraints="NO" id="zIJ-U2-ipY">
-                        <rect key="frame" x="8" y="8" width="304" height="40"/>
+                        <rect key="frame" x="8" y="0.0" width="304" height="48"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="C9x-QK-jpI"/>
+                            <constraint firstAttribute="height" constant="48" id="C9x-QK-jpI"/>
                             <constraint firstAttribute="width" constant="304" id="xT2-xd-hIc"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -45,7 +45,7 @@
                             <constraint firstAttribute="height" constant="21" id="Ws8-51-Jew"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15 " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7uN-7T-Fdn">
@@ -55,7 +55,7 @@
                             <constraint firstAttribute="height" constant="21" id="wXr-bv-QvL"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Tues. 03/24/15" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LjO-I2-hfu">
@@ -65,7 +65,7 @@
                             <constraint firstAttribute="width" constant="107" id="LRG-uA-Q5F"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="date_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="5Em-Zo-r8c">
@@ -97,7 +97,7 @@
                     <constraint firstItem="7uN-7T-Fdn" firstAttribute="top" secondItem="zIJ-U2-ipY" secondAttribute="bottom" constant="12" id="p8T-35-YO1"/>
                     <constraint firstItem="zIJ-U2-ipY" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="rQu-DX-2Q0"/>
                     <constraint firstItem="zIJ-U2-ipY" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="tWu-0H-6hW"/>
-                    <constraint firstItem="zIJ-U2-ipY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="tkj-Nk-ShK"/>
+                    <constraint firstItem="zIJ-U2-ipY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-8" id="tkj-Nk-ShK"/>
                     <constraint firstItem="oMT-2a-Wph" firstAttribute="top" secondItem="zIJ-U2-ipY" secondAttribute="bottom" constant="12" id="uQ3-OW-ObT"/>
                     <constraint firstItem="5Em-Zo-r8c" firstAttribute="top" secondItem="zIJ-U2-ipY" secondAttribute="bottom" constant="9" id="vcS-tT-tCk"/>
                 </constraints>

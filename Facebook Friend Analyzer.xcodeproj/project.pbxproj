@@ -279,6 +279,18 @@
 			name = "Default Files";
 			sourceTree = "<group>";
 		};
+		948A71711B745C5F00D5C7DA /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				94B0BF851B6F304B008F84D1 /* date_icon.png */,
+				94B0BF811B6F2FDC008F84D1 /* facebook_comment_icon.jpg */,
+				94B0BF821B6F2FDC008F84D1 /* facebook_like_icon.png */,
+				94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */,
+				94B0BF691B6ED910008F84D1 /* blank_profile_picture.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		94B0BF681B6E14F7008F84D1 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,11 +380,7 @@
 				94509A101B65FD2100DC2212 /* Objects */,
 				94B2B01C1B14E82900CFE01F /* AppDelegate.h */,
 				94B2B01D1B14E82900CFE01F /* AppDelegate.m */,
-				94B0BF851B6F304B008F84D1 /* date_icon.png */,
-				94B0BF811B6F2FDC008F84D1 /* facebook_comment_icon.jpg */,
-				94B0BF821B6F2FDC008F84D1 /* facebook_like_icon.png */,
-				94D17D351B1A514B006AF7A7 /* facebook_f_icon.png */,
-				94B0BF691B6ED910008F84D1 /* blank_profile_picture.png */,
+				948A71711B745C5F00D5C7DA /* Icons */,
 				94B2B0271B14E82900CFE01F /* LaunchScreen.xib */,
 				94B0BF781B6EE06B008F84D1 /* Loading Animation */,
 				941732671B15058F006B5F78 /* KeyChain */,

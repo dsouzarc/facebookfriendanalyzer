@@ -34,7 +34,7 @@
             [self.allPosts setObject:post forKey:post.postID];
         }
         
-        [self.autocompletePostsToShow addObject:@"yooo"];
+        //[self.autocompletePostsToShow addObject:@"yooo"];
     }
     
     return self;
@@ -45,6 +45,8 @@
     
     //[self.facebookPostsTableView registerClass:[ViewPostDownloaderTableViewCell class] forCellReuseIdentifier:@"FacebookPostTVC"];
     [self.facebookPostsTableView registerNib:[UINib nibWithNibName:@"ViewPostDownloaderTableViewCell" bundle:[NSBundle mainBundle]] forCellReuseIdentifier:@"FacebookPostTVC"];
+    
+    [self getFacebookPosts];
 }
 
 - (IBAction)backButton:(id)sender {
@@ -53,17 +55,25 @@
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    ViewPostDownloaderTableViewCell *postDownloader = [self.facebookPostsTableView dequeueReusableCellWithIdentifier:@"FacebookPostTVC"];
+    ViewPostDownloaderTableViewCell *postCell = [self.facebookPostsTableView dequeueReusableCellWithIdentifier:@"FacebookPostTVC"];
     
-    if(!postDownloader) {
-        postDownloader = [[ViewPostDownloaderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FacebookPostTVC"];
+    if(!postCell) {
+        postCell = [[ViewPostDownloaderTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"FacebookPostTVC"];
     }
     
-    return postDownloader;
+    Post *post = (Post*)[self.autocompletePostsToShow objectAtIndex:indexPath.row];
+    
+    postCell.postTextView.text = post.message;
+    postCell.dateLabel.text = post.time;
+    postCell.dateLabel.adjustsFontSizeToFitWidth = YES;
+    
+    
+    return postCell;
 }
 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    NSLog(@"Yo");
     return self.autocompletePostsToShow.count;
 }
 
@@ -74,7 +84,117 @@
 
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 105;
+    return 110;
+}
+
+/****************************************
+ *       FACEBOOK POSTS
+ ****************************************/
+
+# pragma mark - Posts
+
+- (void) getFacebookPosts
+{
+    //GET LIST OF FRIENDS
+    NSString *urlRequest = @"me/feed?include_hidden=true&limit=15";
+    
+    [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
+        if(error) {
+            NSLog(@"ERROR AT USER POSTS\t%@", [error description]);
+        }
+        
+        else {
+            NSDictionary *formattedResults = (NSDictionary*) result;
+            
+            NSArray *postResults = formattedResults[@"data"];
+            for(NSDictionary *dict in postResults) {
+                
+                NSString *messageAndStory;
+                
+                if(dict[@"story"] && dict[@"message"]) {
+                    messageAndStory = [NSString stringWithFormat:@"Story: %@. Message: %@", dict[@"story"], dict[@"message"]];
+                }
+                else if(dict[@"story"]) {
+                    messageAndStory = [NSString stringWithFormat:@"Story: %@", dict[@"story"]];
+                }
+                else if(dict[@"message"]){
+                    messageAndStory = [NSString stringWithFormat:@"Message: %@", dict[@"message"]];
+                }
+                else {
+                    messageAndStory = @"No message or story";
+                }
+
+                Post *post = [[Post alloc] initWithMessage:messageAndStory postID:dict[@"id"] time:dict[@"created_time"]];
+                
+                [self.allPosts setObject:post forKey:post.postID];
+                [self.autocompletePostsToShow addObject:post];
+                
+                [self getPostLikesAndComments:post];
+                //NSLog(@"\n\n%@\n\n", dict);
+                
+                //NSLog(@"GOOD STORY: %@", dict[@"story"]);
+                
+                for(NSString *key in dict.allKeys) {
+                    //NSLog(@"Key: %@\tValue: %@", key, dict[key]);
+                }
+            }
+            
+            [self.facebookPostsTableView reloadData];
+            
+            //NSDictionary *firstPost = postResults[1];
+            //NSString *postID = firstPost[@"id"];
+            //NSLog(@"Post ID: %@\t%@", postID, firstPost[@"message"]);
+            
+            //NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+            //[self.facebookPostsTableView reloadData];
+            //[self recursivelyGetPosts:pagingInformation[@"next"]];
+        }
+    }];
+}
+
+- (void) recursivelyGetPosts:(NSString*)url
+{
+    NSData *data = [[NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:nil] dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *formattedResults = (NSDictionary*)[NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+    
+    NSDictionary *pagingInformation = [formattedResults objectForKey:@"paging"];
+    
+    NSArray *postResults = formattedResults[@"data"];
+    for(NSDictionary *dict in postResults) {
+        
+        NSString *messageAndStory;
+        
+        if(dict[@"story"]) {
+            messageAndStory = [NSString stringWithFormat:@"Story: %@. Message: %@", dict[@"story"], dict[@"message"]];
+        }
+        else {
+            messageAndStory = [NSString stringWithFormat:@"Message: %@", dict[@"message"]];
+        }
+        
+        Post *post = [[Post alloc] initWithMessage:messageAndStory postID:dict[@"id"] time:dict[@"created_time"]];
+        
+        [self.allPosts setObject:post forKey:post.postID];
+        [self.autocompletePostsToShow addObject:post];
+        
+        [self getPostLikesAndComments:post];
+        //NSLog(@"%@", dict[@"message"]);
+    }
+    
+    [self.facebookPostsTableView reloadData];
+    
+    if(pagingInformation && pagingInformation[@"next"]) {
+        [self recursivelyGetPosts:pagingInformation[@"next"]];
+    }
+    
+    else {
+        NSLog(@"Here..?");
+    }
+}
+
+- (void) getPostLikesAndComments:(Post*)post
+{
+    //[self getFacebookLikesWithPostID:post.postID];
+    //[self getFacebookCommentsWithFacebookPostOrCommentID:post.postID depthLevel:0];
 }
 
 
