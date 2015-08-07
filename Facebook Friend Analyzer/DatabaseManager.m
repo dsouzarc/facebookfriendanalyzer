@@ -9,7 +9,7 @@
 #import "DatabaseManager.h"
 
 static int MAX_DB_TRIES = 45;
-static float DB_SLEEP_FOR_TIME = 1.1;
+static float DB_SLEEP_FOR_TIME = 0.1;
 
 @interface DatabaseManager ()
 
@@ -288,10 +288,14 @@ static DatabaseManager *databaseManager = nil;
 
 - (void) addPostToTable:(Post *)post database:(sqlite3*)database
 {
+    NSString *postMessage = [post.message stringByReplacingOccurrencesOfString:@"'" withString:@"''"];
     NSString *insertSQL = [NSString stringWithFormat:@"insert into Post(postID, message, time, linkToPhoto) values ('%lld', '%@', '%@', '%@')",
-                           [post.postID longLongValue], post.message, post.time, post.linkToPhoto];
+                           [post.postID longLongValue], postMessage, post.time, post.linkToPhoto];
     if(![self executeStatement:insertSQL database:database]) {
         NSLog(@"PROBLEM INSERTING POST: %@\t%@", post.postID, post.message);
+    }
+    else {
+        NSLog(@"Successfully added: %@", insertSQL);
     }
 }
 
@@ -311,7 +315,6 @@ static DatabaseManager *databaseManager = nil;
     sqlite3_open([self.databasePath UTF8String], &database);
     
     sqlite3_exec(database, "BEGIN TRANSACTION", NULL, NULL, &errorMessage);
-    
     for(Post *post in posts) {
         [self addPostToTable:post database:database];
     }
@@ -333,6 +336,7 @@ static DatabaseManager *databaseManager = nil;
         while(sqlite3_step(statement) == SQLITE_ROW) {
             NSString *postID = [NSString stringWithFormat:@"%lld", sqlite3_column_int64(statement, 0)];
             NSString *message = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 1)];
+            message = [message stringByReplacingOccurrencesOfString:@"''" withString:@"'"];
             NSString *postDate = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 2)];
             NSString *linkToPhoto = [NSString stringWithFormat:@"%s", sqlite3_column_text(statement, 3)];
             
@@ -394,7 +398,7 @@ static DatabaseManager *databaseManager = nil;
             sqlite3_finalize(statement);
             
             if(errorCount == MAX_DB_TRIES) {
-                printf("MAX TRIES REACHED FOR: %s\t%s\n", [sqlQuery UTF8String], sqlite3_errmsg(database));
+                printf("MAX TRIES REACHED FOR: %s\tError Message: %s\n", [sqlQuery UTF8String], sqlite3_errmsg(database));
                 return false;
             }
             
