@@ -11,6 +11,8 @@
 @interface GetFacebookPostsViewController ()
 
 @property (strong, nonatomic) IBOutlet UITableView *facebookPostsTableView;
+@property (strong, nonatomic) IBOutlet UISearchBar *searchBar;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *settingsButton;
 
 @property (strong, nonatomic) NSMutableDictionary *allPosts;
 @property (strong, nonatomic) NSMutableArray *autocompletePostsToShow;
@@ -40,6 +42,16 @@
     return self;
 }
 
+- (void) searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
+{
+    
+}
+
+- (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar
+{
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -67,7 +79,6 @@
     postCell.dateLabel.text = post.time;
     postCell.dateLabel.adjustsFontSizeToFitWidth = YES;
     
-    
     return postCell;
 }
 
@@ -85,6 +96,8 @@
 - (CGFloat) tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 110;
+}
+- (IBAction)settingsAction:(id)sender {
 }
 
 /****************************************

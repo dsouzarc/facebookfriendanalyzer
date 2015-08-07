@@ -16,6 +16,6 @@
 
 #import "PQFBouncingBalls.h"
 
-@interface GetFacebookPostsViewController : ViewController <UITableViewDelegate, UITableViewDataSource>
+@interface GetFacebookPostsViewController : ViewController <UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate>
 
 @end
