@@ -25,8 +25,32 @@
         self.postID = postID;
         self.time = time;
         self.linkToPhoto = linkToPhoto;
+        self.numberOfLikes = 0;
+        self.numberOfComments = 0;
     }
     return self;
+}
+
+- (instancetype) initWithDictionary:(NSDictionary*)dictionary
+{
+    NSString *messageAndStory;
+    
+    if(dictionary[@"story"] && dictionary[@"message"]) {
+        messageAndStory = [NSString stringWithFormat:@"Story: %@. Message: %@", dictionary[@"story"], dictionary[@"message"]];
+    }
+    else if(dictionary[@"story"]) {
+        messageAndStory = [NSString stringWithFormat:@"Story: %@", dictionary[@"story"]];
+    }
+    else if(dictionary[@"message"]){
+        messageAndStory = [NSString stringWithFormat:@"Message: %@", dictionary[@"message"]];
+    }
+    else {
+        messageAndStory = @"No message or story";
+    }
+    
+    self = [self initWithMessage:messageAndStory postID:dictionary[@"object_id"] time:dictionary[@"created_time"] linkToPhoto:dictionary[@"full_picture"]];
+    return self;
+    
 }
 
 @end

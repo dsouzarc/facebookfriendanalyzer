@@ -14,8 +14,11 @@
 @property (strong, nonatomic) NSString *postID;
 @property (strong, nonatomic) NSString *time;
 @property (strong, nonatomic) NSString *linkToPhoto;
+@property NSInteger numberOfLikes;
+@property NSInteger numberOfComments;
 
 - (instancetype) initWithMessage:(NSString*)message postID:(NSString*)postID time:(NSString*)time;
 - (instancetype) initWithMessage:(NSString*)message postID:(NSString*)postID time:(NSString*)time linkToPhoto:(NSString*)linkToPhoto;
+- (instancetype) initWithDictionary:(NSDictionary*)dictionary;
 
 @end

@@ -108,35 +108,15 @@
             
             NSArray *postResults = formattedResults[@"data"];
             for(NSDictionary *dict in postResults) {
-                
-                NSString *messageAndStory;
-                
-                if(dict[@"story"] && dict[@"message"]) {
-                    messageAndStory = [NSString stringWithFormat:@"Story: %@. Message: %@", dict[@"story"], dict[@"message"]];
-                }
-                else if(dict[@"story"]) {
-                    messageAndStory = [NSString stringWithFormat:@"Story: %@", dict[@"story"]];
-                }
-                else if(dict[@"message"]){
-                    messageAndStory = [NSString stringWithFormat:@"Message: %@", dict[@"message"]];
-                }
-                else {
-                    messageAndStory = @"No message or story";
-                }
 
-                Post *post = [[Post alloc] initWithMessage:messageAndStory postID:dict[@"object_id"] time:dict[@"created_time"]];
+                Post *post = [[Post alloc] initWithDictionary:dict];
                 
                 [self.allPosts setObject:post forKey:post.postID];
                 [self.autocompletePostsToShow addObject:post];
                 
                 [self getPostLikesAndComments:post];
-                NSLog(@"\n\n%@\n\n", dict);
                 
-                NSLog(@"PICTURE: %@", dict[@"picture"]);
-                
-                for(NSString *key in dict.allKeys) {
-                    //NSLog(@"Key: %@\tValue: %@", key, dict[key]);
-                }
+                //NSLog(@"\n\n%@\n\n", dict);
             }
             
             [self.facebookPostsTableView reloadData];
