@@ -96,7 +96,7 @@
 - (void) getFacebookPosts
 {
     //GET LIST OF FRIENDS
-    NSString *urlRequest = @"me/feed?fields=full_picture,message,id,story,created_time&include_hidden=true&limit=15";
+    NSString *urlRequest = @"me/feed?fields=full_picture,message,id,story,created_time,object_id&limit=15&include_hidden=true";
     
     [[[FBSDKGraphRequest alloc] initWithGraphPath:urlRequest parameters:nil] startWithCompletionHandler:^(FBSDKGraphRequestConnection *connection, id result, NSError *error) {
         if(error) {
@@ -124,7 +124,7 @@
                     messageAndStory = @"No message or story";
                 }
 
-                Post *post = [[Post alloc] initWithMessage:messageAndStory postID:dict[@"id"] time:dict[@"created_time"]];
+                Post *post = [[Post alloc] initWithMessage:messageAndStory postID:dict[@"object_id"] time:dict[@"created_time"]];
                 
                 [self.allPosts setObject:post forKey:post.postID];
                 [self.autocompletePostsToShow addObject:post];
